@@ -1,0 +1,890 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+    /* Copy this part for all pages */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Comfortaa";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    background-color: #28b485;
+    color: #777;
+    padding: 0rem 2rem;
+}
+
+.background-stripe {
+    display: inline-block;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    backface-visibility: hidden;
+    height: 100%;
+    width: 80%;
+
+    background: linear-gradient(
+        rgba(26, 116, 86, 0.74),
+        rgba(40, 180, 133, 0.747)),
+        url(/img_backgrounds/background-vector.png);
+    background-position: center;
+
+    z-index: -1;
+}
+
+    /****** NAV BAR ******/
+
+.home-box {
+    display: block;
+    margin-left: 1rem;
+    float: left;
+}
+
+.btn-home {
+    position: relative;
+    height: 3.2rem;
+    margin-top: 0.7rem;
+
+    transition: all 200ms;
+}
+.btn-home:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+
+    transition: all 200ms;
+}
+
+.top-nav {
+    position: fixed;
+    box-sizing: content-box;
+    display: block;
+    backface-visibility: hidden;
+    text-align: end;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 75px;
+    background-color: #55c57a;
+    border-radius: 0px 0px 0px 20px;
+    box-shadow: 0.5px 5px 10px rgba(34, 34, 34, 0.747);
+
+    z-index: 50;
+
+    animation: navSlide 1500ms;
+
+    transition: all 300ms ease-out;
+}
+.top-nav.active {
+    top: 0%;
+
+    transition: all 300ms ease-out;
+}
+
+.ul-menu {
+    margin-right: 1.5rem;
+}
+
+.top {
+    display: inline-block;
+    position: relative;
+    min-width: 10rem;
+    max-width: 10rem;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 1rem;
+    padding: 0.5rem, 0rem;
+    border-radius: 20px 20px 0px 0px;
+
+    transition: all 200ms;
+}
+.top:hover {
+    cursor: default;
+    padding-bottom: 2rem;
+
+    transition: all 200ms;
+}
+.top:hover .hover-content {
+    display: block;
+
+    transition: all 300ms;
+}
+.selected .hover-content {
+    display: block;
+
+    transition: all 300ms;
+}
+
+.hover-content {
+    display: none;
+    position: absolute;
+    text-align: center;
+    margin-top: 1.156rem;
+    /* scale min/max with .top minx/max */
+    min-width: 10rem;
+    max-width: 10rem;
+    background-color: #55c57a;
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 2px 5px 5px rgba(34, 34, 34, 0.699);
+    overflow: hidden;
+    
+    z-index: 1;
+
+    transition: all 300ms;
+}
+.hover-content a {
+    display: block;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.5rem 0rem;
+    text-decoration: none;
+
+    animation: tempLock 300ms;
+
+    transition: all 300ms;
+}
+.hover-content a:hover {
+    color: #7ed56f;
+    background-color: #28b485;
+    transform: scale(1);
+
+    transition: all 300ms;
+}
+
+    /****** HEADER ******/
+
+header {
+    position: relative;
+    box-sizing: content-box;
+    height: 50rem;
+    background: linear-gradient(
+        rgba(126, 213, 111, 0.493),
+        rgba(40, 180, 133, 0.959)),
+        url(/img_backgrounds/background-thors_well.jpg);
+    background-position: top;
+    background-size: cover;
+    clip-path: circle(68% at 50% 0);
+    
+    text-align: center;
+}
+
+.title-box {
+    position: relative;
+    top: 15rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    backface-visibility: hidden;
+    width: 100vw;
+    color: #fff;
+}
+.title-box:hover {
+    cursor: default;
+}
+.title-primary {
+    display: block;
+    font-size: 6rem;
+    letter-spacing: 17px;
+
+    animation: slideInLeft 1000ms ease-out;
+}
+.title-sub {
+    display: block;
+    font-size: 3.5rem;
+    letter-spacing: 10px;
+
+    animation: slideInRight 1000ms ease-out;
+}
+
+/* Header Button */
+
+.btn-header {
+    display: inline-block;
+    position: relative;
+    top: 15rem;
+    font-family: "Comfortaa";
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 100px;
+    color: #fff;
+    background: linear-gradient(
+        #55c57a,
+        #28b485cc);
+
+    transition: all 200ms;
+
+    animation: riseUp 1800ms;
+}
+.btn-header:hover {
+    transition: all 200ms;
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0px 20px 20px rgba(0,0,0,.2);
+}
+.btn-header:active {
+    transform: translateY(-1px);
+    box-shadow: 0px 8px 10px rgba(0,0,0,.2);
+}
+.btn-header:focus {
+    outline: 0;
+}
+
+    /****** MAIN SECTION ******/
+
+#get-started { /* point for btn-scroll to lock to */
+    display: none;
+    position: relative;
+    display: block;
+    transform: translateY(-80px);
+}
+
+main {
+    margin-top: 5rem;
+    color: #fff;
+}
+
+/* Intro Quote */
+
+.quote-container {
+    display: block;
+    text-align: center;
+    position: relative;
+    padding: 1rem 0rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(
+        rgba(40, 180, 133, 0.692),
+        rgba(85, 197, 122, 0.747),
+        rgba(126, 213, 111, 0.959)),
+        url(/img_backgrounds/background-forest.png);
+    background-size: cover;
+    background-position: 8rem;
+    box-shadow: 4px 6px 10px rgba(0,0,0,.2);
+    border-radius: 25px;
+}
+
+.quote-text {
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Intro */
+
+.intro-container {
+    margin-left: 7.5rem; /* will need to change for smaller screens */
+    margin-right: 8rem; /* will need to change for smaller screens */
+    margin-bottom: 5rem;
+}
+.intro-title {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.intro-text {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    margin-left: 2.5rem;
+}
+.intro-text-menu {
+    background-color: #55c57af6;
+    padding: 5px 8px;
+    border-radius: 15px;
+
+    transition: all 300ms;
+}
+.intro-text-menu:hover {
+    cursor: pointer;
+    background-color: #55c57aaf;
+    box-shadow: 4px 6px 10px rgba(0,0,0,.2);
+
+    transition: all 300ms;
+}
+.intro-text-menu:active {
+    background-color: #59c47d;
+    box-shadow: 4px 4px 8px rgba(0,0,0,.2);
+
+    transition: all 300ms;
+}
+
+/* Info Flip Cards */
+
+.card-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.info-card {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 1rem 0.75rem;
+    height: 40rem;
+    width: 25%;
+    background: linear-gradient(
+        #28b485,
+        #55c57a,
+        #7ed56f
+    );
+    border-radius: 20px;
+    box-shadow: 4px 6px 10px rgba(0,0,0,.2);
+
+    perspective: 1000px;
+}
+
+.info-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.info-card:hover .info-card-inner {
+    transform: rotateY(180deg);
+}
+
+.info-card-front, .info-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.info-card-front.card1 {
+    background: linear-gradient(
+        rgba(40, 180, 133, 0.561),
+        rgba(85, 197, 122, 0.753),
+        rgba(126, 213, 111, 0.849)),
+        url(/img_cards/card-forest.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+.info-card-front.card2 {
+    background: linear-gradient(
+        rgba(40, 180, 133, 0.561),
+        rgba(85, 197, 122, 0.753),
+        rgba(126, 213, 111, 0.863)),
+        url(/img_cards/card-desert.JPG);
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+.info-card-front.card3 {
+    background: linear-gradient(
+        rgba(40, 180, 133, 0.561),
+        rgba(85, 197, 122, 0.753),
+        rgba(126, 213, 111, 0.863)),
+        url(/img_cards/card-coast.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+
+.info-card-back {
+    transform: rotateY(180deg);
+}
+
+.card-title {
+    display: block;
+    font-size: 2rem;
+    padding: 1.5rem 0rem;
+}
+
+.card-text {
+    display: block;
+    margin: 0rem 1.2rem;
+    font-size: 1.2rem;
+}
+
+.card-link {
+    display: block;
+    position: absolute;
+    text-align: center;
+    background: linear-gradient(
+        rgba(40, 180, 133, 0.075),
+        rgba(85, 197, 122, 0.753),
+        rgba(126, 213, 111, 0.849));
+    left: 50%;
+    bottom: 5%;
+    transform: translate(-50%);
+    width: 70%; /* may need to change in media queries */
+    text-decoration: none;
+    color: #fff;
+    border: solid 2px #fff;
+    border-radius: 50px;
+    padding: 0.5rem 0rem;
+
+    transition: all 200ms;
+}
+.card-link:hover {
+    transition: all 200ms;
+    cursor: pointer;
+    transform: translate(-50%, -10%);
+    box-shadow: 0px 20px 20px rgba(0,0,0,.2);
+}
+.card-link:active {
+    transform: translate(-50%, -4%);
+    box-shadow: 0px 8px 10px rgba(0,0,0,.2);
+}
+.card-link:focus {
+    outline: 0;
+}
+
+.card-link-text {
+    display: inline-block;
+    font-size: 1.2rem; /* will need to change in queries */
+    margin-right: 10px;
+}
+.card-link-img {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 30px; /* will need to change in queries */
+}
+
+    /****** ANIMATIONS ******/
+
+@keyframes navSlide {
+    0%{
+        opacity: 0.5;
+        transform: translateX(92.5%);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes dropDown {
+    0%{
+        z-index: -1;
+        transform: translateY(-150px);
+    }
+    100% {
+        z-index: 1;
+    }
+
+}
+
+@keyframes slideInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes riseUp {
+    0%{
+        opacity: 0;
+        transform: translateY(250px);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes tempLock {
+    0% {
+        pointer-events: none;
+        cursor: default;
+
+        opacity: 0;
+        transform: translateY(-150px);
+        z-index: -1;
+    }
+    25% {
+        pointer-events: all;
+        cursor: pointer;
+    }
+    100% {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+    /****** MEDIA QUERIES ******/
+
+@media only screen and (max-width: 1225px) {
+    .card-title {
+        display: block;
+        font-size: 1.75rem;
+        padding: 1.2rem 0.1rem;
+    }
+    .card-text {
+        margin: 0rem 0.5rem;
+        font-size: 1rem;
+    }
+} 
+
+@media only screen and (max-width: 1000px) {
+    header {
+        height: 65rem;
+        margin-bottom: -20rem;
+    }
+
+    .title-primary {
+        font-size: 5rem;
+        letter-spacing: 17px;
+    }
+    .title-sub {
+        font-size: 3rem;
+        letter-spacing: 10px;
+    }
+
+    .card-link {
+        bottom: 5%;
+        width: 70%; /* may need to change in media queries */
+        padding: 0.25rem 0rem;
+    
+        transition: all 200ms;
+    }    
+    .card-link-text {
+        display: inline-block;
+        font-size: 1rem; /* will need to change in queries */
+        margin-right: 10px;
+    }
+    .card-link-img {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        height: 20px; /* will need to change in queries */
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    .background-stripe {
+        width: 85%;
+    }
+
+    header {
+        height: 65rem;
+        margin-bottom: -25rem;
+    }
+
+    .title-primary {
+        font-size: 4.5rem;
+        letter-spacing: 16px;
+    }
+    .title-sub {
+        font-size: 2.8rem;
+        letter-spacing: 8px;
+    }
+
+    .quote-text {
+        font-size: 1.8rem;
+    }
+
+    .intro-container {
+        margin-left: 4rem;
+        margin-right: 5rem;
+
+    }
+    .intro-title {
+        font-size: 2.25rem;
+    }
+    .intro-text {
+        font-size: 1.4rem;
+        margin-bottom: 2.25rem;
+        margin-left: 2.25rem;
+    }
+
+    .info-card {
+        display: block;
+        position: relative;
+        left: 50%;
+        -ms-transform: translateX(-50%);
+        transform: translateX(-53.5%);
+        margin: 1rem 0.75rem;
+        height: 30rem;
+        width: 75%;
+    }
+
+    .card-title {
+        display: block;
+        font-size: 2rem;
+        padding: 1.5rem 0rem;
+    }
+    
+    .card-text {
+        display: block;
+        margin: 0rem 1.2rem;
+        font-size: 1.2rem;
+    }
+
+    .card-link {
+        width: 45%;
+    }  
+}
+
+@media only screen and (max-width: 650px) {
+    .background-stripe {
+        width: 87.5%;
+        background-position: 62rem;
+    }
+
+    .btn-home {
+        height: 2.75rem;
+        margin-top: 0.7rem;
+    }
+
+    .ul-menu {
+        margin-right: 0rem;
+    }
+    .top {
+        min-width: 8rem;
+        max-width: 8rem;
+        text-align: center;
+        font-weight: 400;
+        font-size: 1.3rem;
+        padding: 0.3rem, 0rem;
+    }
+    .hover-content {
+        /* scale min/max with .top minx/max */
+        min-width: 8rem;
+        max-width: 8rem;
+    }
+
+    header {
+        height: 70rem;
+        margin-bottom: -30rem;
+    }
+
+    .title-primary {
+        font-size: 4rem;
+        letter-spacing: 16px;
+    }
+    .title-sub {
+        font-size: 2rem;
+        letter-spacing: 8px;
+    }
+
+    .quote-text {
+        font-size: 1.8rem;
+    }
+
+    .intro-container {
+        margin-left: 2rem;
+        margin-right: 3rem;
+    }
+    
+    .card-text {
+        margin-top: -1rem;
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .quote-container {
+        padding: 0.75rem 0.5rem;
+        margin-top: 0rem;
+        margin-bottom: 3rem;
+    }
+    .quote-text {
+        font-size: 1.45rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        padding: 0rem 0.75rem;
+    }
+    .background-stripe {
+        width: 87.5%;
+        background-position: 73rem;
+    }
+
+    .btn-home {
+        height: 2.5rem;
+        margin-top: 0.7rem;
+    }
+    .top {
+        min-width: 7rem;
+        max-width: 7rem;
+        text-align: center;
+        font-weight: 400;
+        font-size: 1.275rem;
+        padding: 0.3rem, 0rem;
+    }
+    .hover-content {
+        /* scale min/max with .top minx/max */
+        min-width: 7rem;
+        max-width: 7rem;
+    }
+
+    header {
+        height: 75rem;
+        margin-bottom: -35rem;
+    }
+
+    .title-box {
+        top: 12.5rem;
+    }
+    .title-primary {
+        font-size: 3.25rem;
+        letter-spacing: 16px;
+    }
+    .title-sub {
+        font-size: 1.6rem;
+        letter-spacing: 5.5px;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+        padding: 1.2rem 0.1rem;
+    }
+    .card-text {
+        margin: 0rem 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 405px) {
+    .home-box {
+        margin-left: 0.5rem;
+    }
+    .btn-home {
+        height: 2.3rem;
+        margin-top: 0.8rem;
+    }
+    .top {
+        margin-top: 1.25rem;
+        min-width: 6rem;
+        max-width: 6rem;
+        text-align: center;
+        font-weight: 400;
+        font-size: 1.15rem;
+        padding: 0rem, 0rem;
+    }
+    .hover-content {
+        /* scale min/max with .top minx/max */
+        min-width: 6rem;
+        max-width: 6rem;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    header {
+        height: 80rem;
+        margin-bottom: -40rem;
+    }
+
+    .title-box {
+        top: 13.2rem;
+    }
+    .title-primary {
+        font-size: 3rem;
+        letter-spacing: 12px;
+    }
+    .title-sub {
+        font-size: 1.275rem;
+        letter-spacing: 4.5px;
+    }
+
+    .quote-text {
+        font-size: 1.3rem;
+    }
+
+    .intro-container {
+        margin-left: 1.2rem;
+        margin-right: 1.2rem;
+        margin-bottom: 1rem;
+
+    }
+    .intro-title {
+        font-size: 1.85rem;
+    }
+    .intro-text {
+        font-size: 1.2rem;
+        margin-bottom: 1.75rem;
+        margin-left: 1.75rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        padding: 1rem 0.1rem;
+    }
+    .card-text {
+        margin: 0rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    .card-link {
+        width: 60%;
+    }    
+}
+
+@media only screen and (max-width: 360px) {
+    .btn-home {
+        height: 2.25rem;
+        margin-top: 1rem;
+    }
+    .ul-menu {
+        margin-right: 0.35rem;
+    }
+    .top {
+        min-width: 6rem;
+        max-width: 6rem;
+        font-size: 1rem;
+        margin-left: -0.5rem;
+    }
+    .hover-content {
+        /* scale min/max with .top minx/max */
+        min-width: 7rem;
+        max-width: 7rem;
+    }
+    .hover-content a {
+        display: block;
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.5rem 0rem;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .btn-home {
+        height: 2.1rem;
+        margin-top: 1.1rem;
+    }
+    .top {
+        margin-top: 1.45rem;
+        min-width: 6rem;
+        max-width: 6rem;
+        font-size: 0.95rem;
+        margin-left: -0.825rem;
+    }
+}
