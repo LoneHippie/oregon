@@ -177,7 +177,7 @@ header {
     background-position: top;
     background-size: cover;
     clip-path: circle(68% at 50% 0);
-    
+    -webkit-clip-path: circle(68% at 50% 0);
     text-align: center;
 }
 
@@ -663,7 +663,7 @@ main {
     }
 
     .ul-menu {
-        margin-right: 0rem;
+        margin-right: 0.75rem;
     }
     .top {
         min-width: 8rem;
@@ -677,6 +677,8 @@ main {
         /* scale min/max with .top minx/max */
         min-width: 8rem;
         max-width: 8rem;
+
+        margin-top: 1.425rem;
     }
 
     header {
@@ -729,6 +731,10 @@ main {
         background-position: 73rem;
     }
 
+    .ul-menu {
+        margin-right: 0.4rem;
+    }
+
     .btn-home {
         height: 2.5rem;
         margin-top: 0.7rem;
@@ -774,7 +780,11 @@ main {
     }
 }
 
-@media only screen and (max-width: 405px) {
+@media only screen and (max-width: 410px) {
+    .ul-menu {
+        margin-right: 1rem;
+    }
+
     .home-box {
         margin-left: 0.5rem;
     }
@@ -793,8 +803,8 @@ main {
     }
     .hover-content {
         /* scale min/max with .top minx/max */
-        min-width: 6rem;
-        max-width: 6rem;
+        min-width: 6.5rem;
+        max-width: 6.5rem;
     }
 }
 
@@ -850,8 +860,8 @@ main {
 
 @media only screen and (max-width: 360px) {
     .btn-home {
-        height: 2.25rem;
-        margin-top: 1rem;
+        height: 2.2rem;
+        margin-top: 0.95rem;
     }
     .ul-menu {
         margin-right: 0.35rem;
@@ -866,6 +876,8 @@ main {
         /* scale min/max with .top minx/max */
         min-width: 7rem;
         max-width: 7rem;
+
+        margin-top: 1.7rem;
     }
     .hover-content a {
         display: block;
@@ -886,5 +898,8 @@ main {
         max-width: 6rem;
         font-size: 0.95rem;
         margin-left: -0.825rem;
+    }
+    .hover-content {
+        margin-top: 1.5rem;
     }
 }
