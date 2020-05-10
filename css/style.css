@@ -38,7 +38,7 @@ body {
     background: linear-gradient(
         rgba(26, 116, 86, 0.74),
         rgba(40, 180, 133, 0.747)),
-        url(/img_backgrounds/background-vector.png);
+        url(./img_backgrounds/background-vector.png);
     background-position: center;
 
     z-index: -1;
@@ -173,7 +173,7 @@ header {
     background: linear-gradient(
         rgba(126, 213, 111, 0.493),
         rgba(40, 180, 133, 0.959)),
-        url(/img_backgrounds/background-thors_well.jpg);
+        url(./img_backgrounds/background-thors_well.jpg);
     background-position: top;
     background-size: cover;
     clip-path: circle(68% at 50% 0);
@@ -272,7 +272,7 @@ main {
         rgba(40, 180, 133, 0.692),
         rgba(85, 197, 122, 0.747),
         rgba(126, 213, 111, 0.959)),
-        url(/img_backgrounds/background-forest.png);
+        url(./img_backgrounds/background-forest.png);
     background-size: cover;
     background-position: 8rem;
     box-shadow: 4px 6px 10px rgba(0,0,0,.2);
@@ -373,7 +373,7 @@ main {
         rgba(40, 180, 133, 0.561),
         rgba(85, 197, 122, 0.753),
         rgba(126, 213, 111, 0.849)),
-        url(/img_cards/card-forest.jpg);
+        url(./img_cards/card-forest.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 20px;
@@ -383,7 +383,7 @@ main {
         rgba(40, 180, 133, 0.561),
         rgba(85, 197, 122, 0.753),
         rgba(126, 213, 111, 0.863)),
-        url(/img_cards/card-desert.JPG);
+        url(./img_cards/card-desert.JPG);
     background-size: cover;
     background-position: center;
     border-radius: 20px;
@@ -393,7 +393,7 @@ main {
         rgba(40, 180, 133, 0.561),
         rgba(85, 197, 122, 0.753),
         rgba(126, 213, 111, 0.863)),
-        url(/img_cards/card-coast.jpg);
+        url(./img_cards/card-coast.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 20px;
