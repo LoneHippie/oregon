@@ -1,5 +1,21 @@
 //document.querySelector('.list').insertAdjacentHTML('beforebegin', "<p>Hellooooo</p>");
 
+//pageID for current file. Use to make functions inactive if they aren't relavant to a certain page
+
+let curFile = location.href.split("/").slice(-1);
+
+if (curFile == '') {
+    curFile = "index.html"
+};
+
+if (curFile == 'index.html') {
+    console.log('positive ID: index');
+} else if (curFile == 'forest.html') {
+    console.log('positive ID: forest');
+} else {
+    console.log('negative ID: other page');
+};
+
 const dataBase = (function(){
 
 //Constructor function for all hikes/destinations
@@ -167,14 +183,14 @@ const dataBase = (function(){
 //regionNum 0 = forest, 1 = desert, 2 = coast
 //type 0 = waterfall, 1 = river, 2 = lake, 3 = hotspring, 4 = destination
 
-    const trail1 = new Hike('Eagle Creek to Punch Bowl Falls', 0, [0, 1], 6, false, '45.63653,-121.91947', true);
-    const trail2 = new Hike('Eagle Creek to Tunnel Falls', 0, [0, 1], 18.2, false, '45.63653,-121.91947', true);
+    const trail1 = new Hike('Punch Bowl Falls', 0, [0, 1], 6, false, '45.63653,-121.91947', true);
+    const trail2 = new Hike('Tunnel Falls', 0, [0, 1], 18.2, false, '45.63653,-121.91947', true);
     const trail3 = new Hike('Multnomah Falls', 0, [0], 6.8, false, '45.57893,-122.11841', true);
     const trail4 = new Hike('Oneonta Gorge', 0, [0, 1], 1.6, false, '45.58948,-122.07531', true);
     const trail5 = new Hike('Romana Falls', 0, [0, 1], 11.4, true, '45.38696,-121.83221', false);
     const trail6 = new Hike('Little Crater Lake', 0, [2], 2.2, false, '45.1478,-121.7478', false);
     const trail7 = new Hike('Trail of Ten Falls', 0, [0, 1], 12.5, true, '44.87752,-122.65513', false);
-    const trail8 = new Hike('Bagby Hot Springs', 0, [3], 12.5, false, '44.95402,-122.17023', false);
+    const trail8 = new Hike('Bagby Trail', 0, [3], 12.5, false, '44.95402,-122.17023', false);
     const trail9 = new Hike('Opal Creek Trail', 0, [0, 1], 16.9, false, '44.85980,-122.26460', false);
     const trail10 = new Hike('Spirit Falls', 0, [0], 1, false, '43.731146,-122.639524', false);
     const trail11 = new Hike('Pinard Falls', 0, [0], 1.9, false, '43.713239,-122.619696', false);
@@ -187,11 +203,11 @@ const dataBase = (function(){
     const trail17 = new Hike('Toketee Falls', 0, [0, 1], 1.3, false, '43.264033,-122.427411', false);
     const trail18 = new Hike('Watson Falls', 0, [0, 1], 1, true, '43.245696,-122.390948', false);
     const trail19 = new Hike('Lemolo Falls', 0, [0, 1], 5.1, false, '43.329709,-122.202589', false);
-    const trail20 = new Hike('Umpqua Hot Springs', 0, [1, 3], 1.3, false, '43.293355,-122.365111', false);
+    const trail20 = new Hike('Umpqua Spings', 0, [1, 3], 1.3, false, '43.293355,-122.365111', false);
     const trail21 = new Hike('Crater Lake', 0, [2, 4], 0, false, '42.946015,-122.169187', false); 
     const trail22 = new Hike('Falls Creek Falls', 0, [0, 1], 1.8, false, '43.313099,-122.835579', false)
 
-    const trail23 = new Hike('Maryhill Loops Road', 1, [4], 0, false, '45.711700,-120.794706', false); 
+    const trail23 = new Hike('Maryhill Loops Rd', 1, [4], 0, false, '45.711700,-120.794706', false); 
     const trail24 = new Hike('White River Falls', 1, [0, 1], 2.2, false, '45.24349,-121.09687', false); 
     const trail25 = new Hike('Cove of Palisades', 1, [2, 4], 0, false, '44.542878,-121.274837', false); 
     const trail26 = new Hike('Smith Rock Park', 1, [1, 4], 0, false, '44.368142,-121.140542', false);
@@ -269,18 +285,7 @@ const dataBase = (function(){
 //console.log(dataBase.getTrails());
 //console.log(dataBase.trips);
 
-dataBase.quoteGen();
-
-document.getElementById('btn-scroll').addEventListener('click', function() { //smooth scroll down to table
-    setTimeout(() => {
-        document.getElementById('get-started').scrollIntoView(
-            {block: "start",
-            behavior: "smooth"
-            });
-    }, 150);
-});
-
-document.body.addEventListener('click', function(event) { //toggle dropdown menu items by clicking p tag spans
+document.body.addEventListener('click', function(event) { //toggle dropdown menu items by clicking p tag spans (will have to modify per page if the nav bar is different)
     const menu1 = document.querySelector('.top-1');
     const menu2 = document.querySelector('.top-2');
     const menu3 = document.querySelector('.top-3'); 
@@ -304,11 +309,170 @@ document.body.addEventListener('click', function(event) { //toggle dropdown menu
         menu2.classList.remove('selected');
         menu3.classList.remove('selected');
     };
+
 });
 
-document.body.addEventListener('hover', function(event) {
-    console.log(event);
-})
 
+const hikeGen = (function(){
 
+    function createlist(pageArray) {
+        let html, newHtml;
 
+        pageArray.forEach((el, index) => { //creates the html section for each hike, still need to add some code for getting the right images and css classes
+
+            html = '<section class="hike-container"><div class="hike-top"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi explicabo nobis, doloribus soluta rerum repellat eveniet, laborum, placeat assumenda quibusdam delectus! Non voluptates earum quam excepturi perspiciatis quisquam praesentium.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, et harum, eveniet esse sequi quod debitis repellendus maxime distinctio deserunt inventore minima adipisci nesciunt dolorum est possimus error incidunt. Distinctio.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam corrupti veritatis illum, quas officiis quo provident voluptatem vero, quibusdam recusandae totam in aliquid nihil quis omnis? Delectus, voluptates quaerat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia dolor laborum consequatur temporibus, tempora quaerat laboriosam est obcaecati! Reiciendis neque odio ut laborum, saepe labore vero provident id a veritatis.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae perspiciatis esse nisi provident, ipsam veniam quia ea consequatur dolore excepturi commodi dolorem sunt repellat inventore! Recusandae ipsam cum a!</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
+
+            newHtml = html.replace('%name%,', index);
+            newHtml = newHtml.replace('%name%', el.name);
+            
+            if (el.lengthKM == undefined || el.lengthKM == null) {
+                newHtml = newHtml.replace('%lengthKM%', '');
+                newHtml = newHtml.replace('%lengthType%', '<img class="hike destination" id="hike-length" src="../img_icons/icon-trail-sign.png"></img>');
+            } else {
+                newHtml = newHtml.replace('%lengthKM%', `${el.lengthKM}&nbsp;km`);
+                newHtml = newHtml.replace('%lengthType%', '<img class="hike %length%" id="hike-length" src="../img_icons/icon-hike.png"></img>');
+                newHtml = newHtml.replace('%length%', el.length);
+            };
+
+            newHtml = newHtml.replace(/%index%/g, index);
+
+            const iconWaterfall = '<img class="type" src="../img_icons/icon-type-waterfall.png">'; //0
+            const iconRiver = '<img class="type" src="../img_icons/icon-type-river.png">'; //1
+            const iconLake = '<img class="type" src="../img_icons/icon-type-lake.png">'; //2
+            const iconHotspring = '<img class="type" src="../img_icons/icon-type-hotspring.png"></img>'; //3
+
+            if (el.typeNum[0] == 0) { //sorts and replaces icon images
+                newHtml = newHtml.replace('%typeIcons%', iconWaterfall);
+
+                if (el.typeNum.includes(1)) { //index 1 = 1
+                    newHtml = newHtml.replace(iconWaterfall, iconWaterfall + iconRiver); {
+                        if (el.typeNum.includes(2)) {
+                            newHtml = newHtml.replace(iconWaterfall + iconRiver, iconWaterfall + iconRiver + iconLake); {
+                                if (el.typeNum.includes(3)) {
+                                    newHtml = newHtml.replace(iconWaterfall + iconRiver + iconLake, iconWaterfall + iconRiver + iconLake + iconHotspring);
+                                }
+                            }
+                        } else if (el.typeNum.includes(3)) { 
+                            newHtml = newHtml.replace(iconWaterfall + iconRiver, iconWaterfall + iconHotspring);
+                        }
+                    }
+                } else if (el.typeNum.includes(2)) { //index 1 = 2
+                    newHtml = newHtml.replace(iconWaterfall, iconWaterfall + iconLake);
+                        if (el.typeNum.includes(3)) {
+                            newHtml = newHtml.replace(iconWaterfall + iconLake, iconWaterfall + iconLake + iconHotspring);
+                        }
+                    
+                } else if (el.typeNum.includes(3)) { //index 1 = 3
+                    newHtml = newHtml.replace(iconWaterfall, iconWaterfall + iconHotspring);
+                }
+            } else if (el.typeNum[0] == 1) {
+                newHtml = newHtml.replace('%typeIcons%', iconRiver);
+
+                if (el.typeNum.includes(2)) {
+                    newHtml = newHtml.replace(iconRiver, iconRiver + iconLake); {
+                        if (el.typeNum.includes(3)) {
+                            newHtml = newHtml.replace(iconRiver + iconLake, iconRiver + iconLake + iconHotspring);
+                        }
+                    }
+                } else if (el.typeNum.includes(3)) {
+                    newHtml = newHtml.replace(iconRiver, iconRiver + iconHotspring);
+                }
+            } else if (el.typeNum[0] == 2) {
+                newHtml = newHtml.replace('%typeIcons%', iconLake);
+
+                if (el.typeNum.includes(3)) {
+                    newHtml = newHtml.replace(iconLake, iconLake + iconHotspring);
+                }
+
+            } else if (el.typeNum[0] == 3) {
+                newHtml = newHtml.replace('%typeIcons%', iconHotspring);
+
+            } else {
+                console.log('error, type combination not found');
+            };
+
+            //inserts completed html for a hike section
+            document.getElementById('genPoint').insertAdjacentHTML('beforeend', newHtml);
+
+        });
+
+    };
+
+    let descActive;
+
+    function toggleDescActive() { //toggles active class and checks to see if exists or not w/descActive boolean
+        let active = document.querySelector('.active');
+
+        if (typeof(active) !== 'undefined' && active !== null) {
+            //inactive state
+            //return descActive = false;
+        } else {
+            //active state
+            return descActive = true;
+        };
+    };
+
+    function openDescription(target) {//toggles active class for descriptions based on descActive status
+        if (descActive == true) {
+            document.getElementById('desc-' + target).classList.toggle('active');
+            document.getElementById('icons-' + target).classList.toggle('active');
+            // console.log('open sesame');
+        } else {
+            document.getElementById('desc-' + target).classList.remove('active');
+            document.getElementById('icons-' + target).classList.remove('active');
+            // console.log('close sesame');
+        };
+    };
+
+    function closeDescriptions(pageArray) { //closes all hike descriptions for initialization
+        for (i = 0; i < pageArray.length; i++) {
+            document.getElementById('desc-' + i).classList.remove('active');
+            document.getElementById('icons-' + i).classList.remove('active');
+        }
+    };
+
+    function buttonEvents(pageArray) {
+        document.body.addEventListener('click', function(event) {
+            for (i = 0; i < pageArray.length; i++) {
+                if (event.toElement.id === `btn-desc-${i}`) {
+                    toggleDescActive();
+                    openDescription(i);
+                };
+            };
+        });
+    };
+
+    return {
+        fillPage: function(dataSet) {
+            createlist(dataSet);
+            toggleDescActive();
+            buttonEvents(dataSet);
+        },
+        init: function(dataSet) {
+            closeDescriptions(dataSet);
+        }
+    };
+
+})();
+
+const pageForest = dataBase.getTrails().forest;
+
+if (curFile == 'index.html') { //if on landing page, adds event listener to scroll button and gets quoteGen function from dataBase
+    document.getElementById('btn-scroll').addEventListener('click', function() { //smooth scroll down to table
+        setTimeout(() => {
+            document.getElementById('get-started').scrollIntoView(
+                {block: "start",
+                behavior: "smooth"
+                });
+        }, 150);
+    });
+
+    document.getElementById('btn-home').style.pointerEvents = "none";
+
+    dataBase.quoteGen();
+};
+
+if (curFile == 'forest.html') {
+    hikeGen.fillPage(pageForest);
+    hikeGen.init(pageForest);
+}

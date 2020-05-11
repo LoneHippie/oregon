@@ -806,6 +806,12 @@ main {
         min-width: 6.5rem;
         max-width: 6.5rem;
     }
+    .hover-content a {
+        display: block;
+        color: #fff;
+        font-size: 0.975rem;
+        padding: 0.5rem 0rem;
+    }
 }
 
 @media only screen and (max-width: 380px) {
