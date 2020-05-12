@@ -75,7 +75,7 @@ body {
     left: 0%;
     top: 0%;
     width: 100%;
-    height: 75px;
+    height: 5rem;
     background-color: #55c57a;
     border-radius: 0px 0px 0px 20px;
     box-shadow: 0.5px 5px 10px rgba(34, 34, 34, 0.747);
@@ -217,10 +217,10 @@ header {
     top: 15rem;
     font-family: "Comfortaa";
     font-weight: 700;
-    font-size: 0.75rem;
+    font-size: 1rem;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.3rem 2.2rem;
     border-radius: 100px;
     color: #fff;
     background: linear-gradient(
@@ -327,15 +327,20 @@ main {
 .card-container {
     text-align: center;
     margin-bottom: 1rem;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .info-card {
-    display: inline-block;
-    position: relative;
+
     text-align: center;
-    margin: 1rem 0.75rem;
-    height: 40rem;
-    width: 25%;
+    height: 42.5rem;
+    width: 32%;
     background: linear-gradient(
         #28b485,
         #55c57a,
@@ -405,14 +410,14 @@ main {
 
 .card-title {
     display: block;
-    font-size: 2rem;
-    padding: 1.5rem 0rem;
+    font-size: 1.8rem;
+    padding: 1rem 0rem;
 }
 
 .card-text {
     display: block;
     margin: 0rem 1.2rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .card-link {
@@ -431,7 +436,8 @@ main {
     color: #fff;
     border: solid 2px #fff;
     border-radius: 50px;
-    padding: 0.5rem 0rem;
+    padding: 0.35rem 0rem;
+    overflow: hidden;
 
     transition: all 200ms;
 }
@@ -451,7 +457,7 @@ main {
 
 .card-link-text {
     display: inline-block;
-    font-size: 1.2rem; /* will need to change in queries */
+    font-size: 1.5rem; /* will need to change in queries */
     margin-right: 10px;
 }
 .card-link-img {
@@ -460,7 +466,7 @@ main {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    height: 30px; /* will need to change in queries */
+    height: 2rem; /* will need to change in queries */
 }
 
     /****** ANIMATIONS ******/
@@ -537,7 +543,7 @@ main {
 
     /****** MEDIA QUERIES ******/
 
-@media only screen and (max-width: 1225px) {
+/* @media only screen and (max-width: 1225px) {
     .card-title {
         display: block;
         font-size: 1.75rem;
@@ -566,14 +572,14 @@ main {
 
     .card-link {
         bottom: 5%;
-        width: 70%; /* may need to change in media queries */
+        width: 70%;
         padding: 0.25rem 0rem;
     
         transition: all 200ms;
     }    
     .card-link-text {
         display: inline-block;
-        font-size: 1rem; /* will need to change in queries */
+        font-size: 1rem; 
         margin-right: 10px;
     }
     .card-link-img {
@@ -582,7 +588,7 @@ main {
         top: 50%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
-        height: 20px; /* will need to change in queries */
+        height: 20px; 
     }
 }
 
@@ -674,7 +680,6 @@ main {
         padding: 0.3rem, 0rem;
     }
     .hover-content {
-        /* scale min/max with .top minx/max */
         min-width: 8rem;
         max-width: 8rem;
 
@@ -748,7 +753,6 @@ main {
         padding: 0.3rem, 0rem;
     }
     .hover-content {
-        /* scale min/max with .top minx/max */
         min-width: 7rem;
         max-width: 7rem;
     }
@@ -802,7 +806,6 @@ main {
         padding: 0rem, 0rem;
     }
     .hover-content {
-        /* scale min/max with .top minx/max */
         min-width: 6.5rem;
         max-width: 6.5rem;
     }
@@ -879,7 +882,6 @@ main {
         margin-left: -0.5rem;
     }
     .hover-content {
-        /* scale min/max with .top minx/max */
         min-width: 7rem;
         max-width: 7rem;
 
@@ -908,4 +910,203 @@ main {
     .hover-content {
         margin-top: 1.5rem;
     }
+} */
+
+@media only screen and (max-width: 1000px) {
+    header {
+        height: 65rem;
+        margin-bottom: -20rem;
+    }
+
+    .title-primary {
+        font-size: 5rem;
+        letter-spacing: 17px;
+    }
+    .title-sub {
+        font-size: 3rem;
+        letter-spacing: 10px;
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    .background-stripe {
+        width: 85%;
+    }
+
+    header {
+        height: 65rem;
+        margin-bottom: -25rem;
+    }
+    .title-primary {
+        font-size: 4.5rem;
+        letter-spacing: 16px;
+    }
+    .title-sub {
+        font-size: 2.8rem;
+        letter-spacing: 8px;
+    }
+
+    .quote-text {
+        font-size: 1.8rem;
+    }
+
+    .intro-container {
+        margin-left: 4rem;
+        margin-right: 5rem;
+
+    }
+    .intro-title {
+        font-size: 2.25rem;
+    }
+    .intro-text {
+        font-size: 1.4rem;
+        margin-bottom: 2.25rem;
+        margin-left: 2.25rem;
+    }
+
+    .card-container {
+        margin-bottom: 1rem;
+        width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .info-card {
+        text-align: center;
+        height: 35rem;
+        width: 75%;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 2rem;
+        padding: 1rem 0rem;
+    }
+    
+    .card-text {
+        display: block;
+        margin: 0rem 1.1rem;
+        font-size: 1.25rem;
+    }
+
+    .icon {
+        height: 4rem;
+        width: 4rem;
+        padding: 0.4rem;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    html {
+        font-size: 13.5px;
+    }
+
+    .background-stripe {
+        width: 87.5%;
+    }
+
+    header {
+        height: 75rem;
+        margin-bottom: -32.5rem;
+    }
+    .title-primary {
+        font-size: 4rem;
+        letter-spacing: 16px;
+    }
+    .title-sub {
+        font-size: 2rem;
+        letter-spacing: 8px;
+    }
+
+    .quote-text {
+        font-size: 1.8rem;
+    }
+
+    .intro-container {
+        margin-left: 2rem;
+        margin-right: 3rem;
+    }
+
+    .info-card {
+        height: 40rem;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    html {
+        font-size: 11.5px;
+    }
+
+    header {
+        height: 75rem;
+        margin-bottom: -35rem;
+    }
+
+    .background-stripe {
+        width: 87.5%;
+    }
+
+    .info-card {
+        width: 80%;
+        height: 42rem;
+    }
+
+    .card-title {
+        font-size: 2.2rem;
+    }
+    
+    .card-text {
+        font-size: 1.35rem;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    html {
+        font-size: 9.5px;
+    }
+
+    .background-stripe {
+        width: 87.5%;
+        background-position: 73rem;
+    }
+
+    header {
+        height: 100rem;
+        margin-bottom: -45rem;
+    }
+
+    .info-card {
+        width: 87.5%;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    html {
+        font-size: 8.7px;
+    }
+
+    header {
+        margin-bottom: -47.5rem;
+    }
+    
+
+    .title-box {
+        top: 13.2rem;
+    }
+    .title-primary {
+        font-size: 3.75rem;
+        letter-spacing: 12px;
+    }
+    .title-sub {
+        font-size: 1.85rem;
+        letter-spacing: 4.5px;
+    }
+
+    .quote-text {
+        font-size: 1.6rem;
+    }
+
 }

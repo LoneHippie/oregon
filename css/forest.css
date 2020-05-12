@@ -475,21 +475,38 @@ main {
 
     /****** MEDIA QUERIES ******/
 
-@media only screen and (max-width: 920px) {
-    .hike-top {
-
+@media only screen and (max-width: 1000px) {
+    header {
+        height: 65rem;
+        margin-bottom: -20rem;
     }
-    .hike-bottom {
 
+    .title-primary {
+        font-size: 5rem;
+        letter-spacing: 17px;
     }
-    .icon-container {
-
+    .title-sub {
+        font-size: 3rem;
+        letter-spacing: 10px;
     }
 }
 
 @media only screen and (max-width: 860px) {
     .background-stripe {
         width: 85%;
+    }
+
+    header {
+        height: 65rem;
+        margin-bottom: -25rem;
+    }
+    .title-primary {
+        font-size: 4.5rem;
+        letter-spacing: 16px;
+    }
+    .title-sub {
+        font-size: 2.8rem;
+        letter-spacing: 8px;
     }
 
     .hike-top {
@@ -526,6 +543,19 @@ main {
         width: 87.5%;
     }
 
+    header {
+        height: 75rem;
+        margin-bottom: -32.5rem;
+    }
+    .title-primary {
+        font-size: 4rem;
+        letter-spacing: 16px;
+    }
+    .title-sub {
+        font-size: 2rem;
+        letter-spacing: 8px;
+    }
+
     html {
         font-size: 13.5px;
     }
@@ -539,17 +569,44 @@ main {
     .background-stripe {
         width: 87.5%;
     }
+
+    header {
+        height: 75rem;
+        margin-bottom: -35rem;
+    }
 }
 
 @media only screen and (max-width: 420px) {
     html {
         font-size: 9.5px;
     }
+
+    header {
+        height: 100rem;
+        margin-bottom: -45rem;
+    }
 }
 
 @media only screen and (max-width: 360px) {
     html {
-        font-size: 8.5px;
+        font-size: 8.7px;
+    }
+
+    header {
+        margin-bottom: -47.5rem;
+    }
+    
+
+    .title-box {
+        top: 13.2rem;
+    }
+    .title-primary {
+        font-size: 3.75rem;
+        letter-spacing: 12px;
+    }
+    .title-sub {
+        font-size: 1.85rem;
+        letter-spacing: 4.5px;
     }
 
     .hike-top {
