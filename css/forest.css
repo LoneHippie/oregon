@@ -40,9 +40,8 @@ body {
     background: linear-gradient(
         rgba(26, 116, 86, 0.74),
         rgba(40, 180, 133, 0.747)),
-        url(../img_backgrounds/background-page-forest2.png);
-    background-size: 180rem 120rem;
-    background-position: top;
+        url(../img_backgrounds/background-vector.png);
+    background-position: center;
 
     z-index: -1;
 }
@@ -136,7 +135,6 @@ body {
     position: absolute;
     text-align: center;
     margin-top: 1.156rem;
-    /* scale min/max with .top minx/max */
     min-width: 10rem;
     max-width: 10rem;
     background-color: #55c57a;
@@ -167,6 +165,7 @@ body {
     transition: all 300ms;
 }
 
+    /****** HEADER ******/
 
 header {
     position: relative;
@@ -175,7 +174,7 @@ header {
     background: linear-gradient(
         rgba(126, 213, 111, 0.493),
         rgba(40, 180, 133, 0.959)),
-        url(../img_backgrounds/background-thors_well.jpg);
+        url(../img_backgrounds/background-forest3.jpg);
     background-position: top;
     background-size: cover;
     clip-path: circle(68% at 50% 0);
@@ -190,7 +189,7 @@ header {
     transform: translate(-50%, -50%);
     text-align: center;
     backface-visibility: hidden;
-    width: 100vw;
+    width: 90vw;
     color: #fff;
 }
 .title-box:hover {
@@ -211,6 +210,7 @@ header {
     animation: slideInRight 1000ms ease-out;
 }
 
+    /****** MAIN CONTENT ******/
 
 main { 
     color: #fff;
@@ -224,14 +224,10 @@ main {
 }
 
 .hike-top {
-    width: 62%;
-    height: 15rem;
+    width: 67%;
+    height: 25rem; /* original (use for smaller screens): 15rem */
     font-weight: 500;
     text-shadow: 1.5px 1.5px 2.25px rgb(1, 2, 0);
-    background: linear-gradient(
-        #7ed56f00,
-        #55c57a73
-    ), url(../img_cards/card-forest.jpg);
     background-position: center;
     background-size: cover;
     border-radius: 20px 20px 0px 0px;
@@ -241,10 +237,10 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 3rem;
-    margin-left: 1.5rem;
-    margin-right: 0.75rem;
-    font-size: 2rem;
+    margin-top: 5rem; /* original (use for smaller screens): 3rem */
+    margin-left: 1.5rem; /* original (use for smaller screens): 1.5rem */
+    margin-right: 0.75rem; /* original (use for smaller screens): 0.75rem */
+    font-size: 3rem; /* original (use for smaller screens): 2rem */
 }
 /* .hike-name {
    
@@ -262,8 +258,8 @@ main {
     max-width: 20rem;
 }
 .type {
-    height: 2.7rem;
-    width: 2.7rem;
+    height: 3.2rem; /* original (use for smaller screens): 2.7rem */
+    width: 3.2rem; /* original (use for smaller screens): 2.7rem */
     padding: 0.2rem;
     margin-right: 2rem;
     border: 2px solid black;
@@ -280,7 +276,7 @@ main {
     flex-direction: row-reverse;
     justify-content: baseline;
     margin-right: 1.75rem;
-    transform: translateY(-1.7rem);
+    transform: translateY(-1.7rem); /* original (use for smaller screens): -1.7rem */
 }
 .short {
     background: linear-gradient(
@@ -308,8 +304,8 @@ main {
 }
 
 .hike {
-    height: 2.7rem;
-    width: 2.7rem;
+    height: 3.2rem; /* original (use for smaller screens): 2.7rem */
+    width: 3.2rem; /* original (use for smaller screens): 2.7rem */
     padding: 0.2rem;
     border: 2px solid black;
     border-radius: 100px;
@@ -318,7 +314,7 @@ main {
 .hike-bottom {
     display: flex;
     flex-direction: column;
-    width: 62%;
+    width: 67%;
     height: 100%;
     background: linear-gradient(
         #55c57a,
@@ -328,13 +324,13 @@ main {
     border-radius: 0px 0px 20px 20px;
 }
 .description-holder {
-    height: 5rem;
+    height: 5rem; /* original (use for smaller screens): 5rem */
 }
 
 .description-box {
     display: none;
     width: 100%;
-    height: 15rem;
+    height: 20rem; /* original (use for smaller screens): 15rem */
     
     /* margin-top: 4rem;
     margin-bottom: 2rem; */
@@ -359,10 +355,10 @@ main {
     flex-direction: row;
     justify-content: space-evenly;
     width: 62%;
-    transform: translateY(-7rem);
+    transform: translateY(-7rem); /* original (use for smaller screens): -7rem */
 }
 .icon-container.active {
-    transform: translateY(-22rem);
+    transform: translateY(-27.5rem); /* original (use for smaller screens): -22rem */
 }
 
 .icon {
@@ -489,6 +485,29 @@ main {
         font-size: 3rem;
         letter-spacing: 10px;
     }
+
+    .hike-top {
+        height: 20rem; /* original (use for smaller screens): 15rem */
+    }
+
+    .info-container {
+        margin-top: 4.5rem; /* original (use for smaller screens): 3rem */
+        font-size: 2rem; /* original (use for smaller screens): 2rem */
+    }
+
+    .type {
+        height: 2.7rem; /* original (use for smaller screens): 2.7rem */
+        width: 2.7rem; /* original (use for smaller screens): 2.7rem */
+    }
+
+    .hike {
+        height: 2.7rem; /* original (use for smaller screens): 2.7rem */
+        width: 2.7rem; /* original (use for smaller screens): 2.7rem */
+    }
+
+    .icon-container.active {
+        transform: translateY(-27rem); /* original (use for smaller screens): -22rem */
+    }
 }
 
 @media only screen and (max-width: 860px) {
@@ -576,6 +595,17 @@ main {
     }
 }
 
+@media only screen and (max-width: 460px) {
+    .hike-top {
+        height: 18rem; /* original (use for smaller screens): 15rem */
+    }
+
+    .info-container {
+        margin-top: 4rem; /* original (use for smaller screens): 3rem */
+    }
+
+}
+
 @media only screen and (max-width: 420px) {
     html {
         font-size: 9.5px;
@@ -584,6 +614,11 @@ main {
     header {
         height: 100rem;
         margin-bottom: -45rem;
+    }
+
+    .background-stripe {
+        width: 87.5%;
+        background-position: 56rem;
     }
 }
 

@@ -20,7 +20,7 @@ const dataBase = (function(){
 
 //Constructor function for all hikes/destinations
 
-    const Hike = function(name, regionNum, typeNum, lengthKM, loop, coords, closed) {
+    const Hike = function(name, regionNum, typeNum, lengthKM, loop, coords, closed, picID) {
         this.name = name;
             //regionNum and typeNum are for array looping reference
         this.regionNum = regionNum; 
@@ -29,6 +29,7 @@ const dataBase = (function(){
         this.loop = loop; //true or false
         this.coords = coords;
         this.closed = closed; //true or false for if trail is currently closed
+        this.id = picID;
         this.region;
         this.type = [];
         this.length;
@@ -183,51 +184,51 @@ const dataBase = (function(){
 //regionNum 0 = forest, 1 = desert, 2 = coast
 //type 0 = waterfall, 1 = river, 2 = lake, 3 = hotspring, 4 = destination
 
-    const trail1 = new Hike('Punch Bowl Falls', 0, [0, 1], 6, false, '45.63653,-121.91947', true);
-    const trail2 = new Hike('Tunnel Falls', 0, [0, 1], 18.2, false, '45.63653,-121.91947', true);
-    const trail3 = new Hike('Multnomah Falls', 0, [0], 6.8, false, '45.57893,-122.11841', true);
-    const trail4 = new Hike('Oneonta Gorge', 0, [0, 1], 1.6, false, '45.58948,-122.07531', true);
-    const trail5 = new Hike('Romana Falls', 0, [0, 1], 11.4, true, '45.38696,-121.83221', false);
-    const trail6 = new Hike('Little Crater Lake', 0, [2], 2.2, false, '45.1478,-121.7478', false);
-    const trail7 = new Hike('Trail of Ten Falls', 0, [0, 1], 12.5, true, '44.87752,-122.65513', false);
-    const trail8 = new Hike('Bagby Trail', 0, [3], 12.5, false, '44.95402,-122.17023', false);
-    const trail9 = new Hike('Opal Creek Trail', 0, [0, 1], 16.9, false, '44.85980,-122.26460', false);
-    const trail10 = new Hike('Spirit Falls', 0, [0], 1, false, '43.731146,-122.639524', false);
-    const trail11 = new Hike('Pinard Falls', 0, [0], 1.9, false, '43.713239,-122.619696', false);
+    const trail1 = new Hike('Punch Bowl Falls', 0, [0, 1], 6, false, '45.63653,-121.91947', true, '001');
+    const trail2 = new Hike('Tunnel Falls', 0, [0, 1], 18.2, false, '45.63653,-121.91947', true, '002');
+    const trail3 = new Hike('Multnomah Falls', 0, [0], 6.8, false, '45.57893,-122.11841', true, '003');
+    const trail4 = new Hike('Oneonta Gorge', 0, [0, 1], 1.6, false, '45.58948,-122.07531', true, '004');
+    const trail5 = new Hike('Romana Falls', 0, [0, 1], 11.4, true, '45.38696,-121.83221', false, '005');
+    const trail6 = new Hike('Little Crater Lake', 0, [2], 2.2, false, '45.1478,-121.7478', false, '006');
+    const trail7 = new Hike('Trail of Ten Falls', 0, [0, 1], 12.5, true, '44.87752,-122.65513', false, '007');
+    const trail8 = new Hike('Bagby Trail', 0, [3], 12.5, false, '44.95402,-122.17023', false, '008');
+    const trail9 = new Hike('Opal Creek Trail', 0, [0, 1], 16.9, false, '44.85980,-122.26460', false, '009');
+    const trail10 = new Hike('Spirit Falls', 0, [0], 1, false, '43.731146,-122.639524', false, '010');
+    const trail11 = new Hike('Pinard Falls', 0, [0], 1.9, false, '43.713239,-122.619696', false, '011');
 
-    const trail12 = new Hike('Steamboat Falls', 0, [0, 1], 1, true, '43.373712,-122.640043', false);
-    const trail13 = new Hike('Wolf Creek Falls', 0, [0], 3.7, false, '43.233835,-122.951074', false);
-    const trail14 = new Hike('Grotto Falls', 0, [0, 1], 0.8, false, '43.248609,-122.824035', false);
-    const trail15 = new Hike('Yakso Falls', 0, [0], 1.4, false, '43.216969,-122.721168', false);
-    const trail16 = new Hike('Hemlock Falls', 0, [0, 2], 1.6, false, '43.216969,-122.721168', false);
-    const trail17 = new Hike('Toketee Falls', 0, [0, 1], 1.3, false, '43.264033,-122.427411', false);
-    const trail18 = new Hike('Watson Falls', 0, [0, 1], 1, true, '43.245696,-122.390948', false);
-    const trail19 = new Hike('Lemolo Falls', 0, [0, 1], 5.1, false, '43.329709,-122.202589', false);
-    const trail20 = new Hike('Umpqua Spings', 0, [1, 3], 1.3, false, '43.293355,-122.365111', false);
-    const trail21 = new Hike('Crater Lake', 0, [2, 4], 0, false, '42.946015,-122.169187', false); 
-    const trail22 = new Hike('Falls Creek Falls', 0, [0, 1], 1.8, false, '43.313099,-122.835579', false)
+    const trail12 = new Hike('Steamboat Falls', 0, [0, 1], 1, true, '43.373712,-122.640043', false, '012');
+    const trail13 = new Hike('Wolf Creek Falls', 0, [0], 3.7, false, '43.233835,-122.951074', false, '013');
+    const trail14 = new Hike('Grotto Falls', 0, [0, 1], 0.8, false, '43.248609,-122.824035', false, '014');
+    const trail15 = new Hike('Yakso Falls', 0, [0], 1.4, false, '43.216969,-122.721168', false, '015');
+    const trail16 = new Hike('Hemlock Falls', 0, [0, 2], 1.6, false, '43.216969,-122.721168', false, '016');
+    const trail17 = new Hike('Toketee Falls', 0, [0, 1], 1.3, false, '43.264033,-122.427411', false, '017');
+    const trail18 = new Hike('Watson Falls', 0, [0, 1], 1, true, '43.245696,-122.390948', false, '018');
+    const trail19 = new Hike('Lemolo Falls', 0, [0, 1], 5.1, false, '43.329709,-122.202589', false, '019');
+    const trail20 = new Hike('Umpqua Spings', 0, [1, 3], 1.3, false, '43.293355,-122.365111', false, '020');
+    const trail21 = new Hike('Crater Lake', 0, [2, 4], 0, false, '42.946015,-122.169187', false, '021'); 
+    const trail22 = new Hike('Falls Creek Falls', 0, [0, 1], 1.8, false, '43.313099,-122.835579', false, '022');
 
-    const trail23 = new Hike('Maryhill Loops Rd', 1, [4], 0, false, '45.711700,-120.794706', false); 
-    const trail24 = new Hike('White River Falls', 1, [0, 1], 2.2, false, '45.24349,-121.09687', false); 
-    const trail25 = new Hike('Cove of Palisades', 1, [2, 4], 0, false, '44.542878,-121.274837', false); 
-    const trail26 = new Hike('Smith Rock Park', 1, [1, 4], 0, false, '44.368142,-121.140542', false);
-    const trail27 = new Hike('Shaniko', 1, [4], 0, false, '45.003942,-120.752193', false);
-    const trail28 = new Hike('Antelope', 1, [4], 0, false, '44.910638,-120.723060', false);
+    const trail23 = new Hike('Maryhill Loops Rd', 1, [4], 0, false, '45.711700,-120.794706', false, '023'); 
+    const trail24 = new Hike('White River Falls', 1, [0, 1], 2.2, false, '45.24349,-121.09687', false, '024'); 
+    const trail25 = new Hike('Cove of Palisades', 1, [2, 4], 0, false, '44.542878,-121.274837', false, '025'); 
+    const trail26 = new Hike('Smith Rock Park', 1, [1, 4], 0, false, '44.368142,-121.140542', false, '026');
+    const trail27 = new Hike('Shaniko', 1, [4], 0, false, '45.003942,-120.752193', false, '027');
+    const trail28 = new Hike('Antelope', 1, [4], 0, false, '44.910638,-120.723060', false, '028');
 
-    const trail29 = new Hike('Rialto Beach', 2, [4], 0, false, '47.919660,-124.638301', false); //WA
-    const trail30 = new Hike('Ruby Beach', 2, [4], 0, false, '47.710928,-124.415417', false); //WA
-    const trail31 = new Hike('Cape Disappointment', 2, [4], 0, false, '46.293634,-124.064134', false); //WA
+    const trail29 = new Hike('Rialto Beach', 2, [4], 0, false, '47.919660,-124.638301', false, '029'); //WA
+    const trail30 = new Hike('Ruby Beach', 2, [4], 0, false, '47.710928,-124.415417', false, '030'); //WA
+    const trail31 = new Hike('Cape Disappointment', 2, [4], 0, false, '46.293634,-124.064134', false, '031'); //WA
 
-    const trail32 = new Hike('Haystack Rock', 2, [4], 0, false, '45.884768,-123.966935', false);
-    const trail33 = new Hike('Munson Creek Falls', 2, [0], 1, false, '45.365640,-123.773530', false);
-    const trail34 = new Hike('Devils Punchbowl', [4], 0, false, '44.747158,-124.064941', false);
-    const trail35 = new Hike('Thor\'s Well', 2, [4], 0, false, '44.278446,-124.113517', false);
-    const trail36 = new Hike('Cape Arago', 2, [4], 0, false, '43.306290,-124.398672', false);
-    const trail37 = new Hike('Bandon Beach', 2, [4], 0, false, '43.105380,-124.433674', false);
-    const trail38 = new Hike('Cape Blanco Lighthouse', 2, [4], 0, false, '42.837277,-124.563727', false);
-    const trail39 = new Hike('Natural Bridges', 2, [4], 0, false, '42.189925,-124.366007', false);
+    const trail32 = new Hike('Haystack Rock', 2, [4], 0, false, '45.884768,-123.966935', false, '032');
+    const trail33 = new Hike('Munson Creek Falls', 2, [0], 1, false, '45.365640,-123.773530', false, '033');
+    const trail34 = new Hike('Devils Punchbowl', [4], 0, false, '44.747158,-124.064941', false, '034');
+    const trail35 = new Hike('Thor\'s Well', 2, [4], 0, false, '44.278446,-124.113517', false, '035');
+    const trail36 = new Hike('Cape Arago', 2, [4], 0, false, '43.306290,-124.398672', false, '036');
+    const trail37 = new Hike('Bandon Beach', 2, [4], 0, false, '43.105380,-124.433674', false, '037');
+    const trail38 = new Hike('Cape Blanco Lighthouse', 2, [4], 0, false, '42.837277,-124.563727', false, '038');
+    const trail39 = new Hike('Natural Bridges', 2, [4], 0, false, '42.189925,-124.366007', false, '039');
 
-    const trail40 = new Hike('Fern Canyon', 2, [0], 1.8, true, '41.400672,-124.065885', false); //CA
+    const trail40 = new Hike('Fern Canyon', 2, [0], 1.8, true, '41.400672,-124.065885', false, '040'); //CA
 
     const trailsWillamette = [trail1, trail2, trail3, trail4, trail5, trail6, trail7, trail8, trail9, trail10, trail11];
     const trailsUmpqua = [trail12, trail13, trail14, trail15, trail16, trail17, trail18, trail19, trail20, trail21, trail22];
@@ -320,10 +321,11 @@ const hikeGen = (function(){
 
         pageArray.forEach((el, index) => { //creates the html section for each hike, still need to add some code for getting the right images and css classes
 
-            html = '<section class="hike-container"><div class="hike-top"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi explicabo nobis, doloribus soluta rerum repellat eveniet, laborum, placeat assumenda quibusdam delectus! Non voluptates earum quam excepturi perspiciatis quisquam praesentium.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, et harum, eveniet esse sequi quod debitis repellendus maxime distinctio deserunt inventore minima adipisci nesciunt dolorum est possimus error incidunt. Distinctio.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam corrupti veritatis illum, quas officiis quo provident voluptatem vero, quibusdam recusandae totam in aliquid nihil quis omnis? Delectus, voluptates quaerat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia dolor laborum consequatur temporibus, tempora quaerat laboriosam est obcaecati! Reiciendis neque odio ut laborum, saepe labore vero provident id a veritatis.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae perspiciatis esse nisi provident, ipsam veniam quia ea consequatur dolore excepturi commodi dolorem sunt repellat inventore! Recusandae ipsam cum a!</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
+            html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi explicabo nobis, doloribus soluta rerum repellat eveniet, laborum, placeat assumenda quibusdam delectus! Non voluptates earum quam excepturi perspiciatis quisquam praesentium.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, et harum, eveniet esse sequi quod debitis repellendus maxime distinctio deserunt inventore minima adipisci nesciunt dolorum est possimus error incidunt. Distinctio.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam corrupti veritatis illum, quas officiis quo provident voluptatem vero, quibusdam recusandae totam in aliquid nihil quis omnis? Delectus, voluptates quaerat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia dolor laborum consequatur temporibus, tempora quaerat laboriosam est obcaecati! Reiciendis neque odio ut laborum, saepe labore vero provident id a veritatis.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae perspiciatis esse nisi provident, ipsam veniam quia ea consequatur dolore excepturi commodi dolorem sunt repellat inventore! Recusandae ipsam cum a!</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
 
             newHtml = html.replace('%name%,', index);
             newHtml = newHtml.replace('%name%', el.name);
+            newHtml = newHtml.replace('%imgID%', `back-image-${index + 1}`);
             
             if (el.lengthKM == undefined || el.lengthKM == null) {
                 newHtml = newHtml.replace('%lengthKM%', '');
@@ -393,6 +395,16 @@ const hikeGen = (function(){
 
             //inserts completed html for a hike section
             document.getElementById('genPoint').insertAdjacentHTML('beforeend', newHtml);
+
+            //creating unique CSS classes for each instance of class="back-image-index"
+            const gradientForest = 'linear-gradient(#7ed56f00, #55c57a73)';
+            let image = `url(../img_hike/hike-${el.id}.jpg)`;
+
+            let imageForest = `${gradientForest}, ${image}`;
+
+            document.querySelector('.back-image-' + (index + 1)).style.background = imageForest;
+            document.querySelector('.back-image-' + (index + 1)).style.backgroundSize = "cover";
+            document.querySelector('.back-image-' + (index + 1)).style.backgroundPosition = "center";
 
         });
 
@@ -467,7 +479,7 @@ if (curFile == 'index.html') { //if on landing page, adds event listener to scro
         }, 150);
     });
 
-    document.getElementById('btn-home').style.pointerEvents = "none";
+    document.getElementById('btn-home').style.pointerEvents = "none"; //disables home button on landing page
 
     dataBase.quoteGen();
 };
@@ -475,4 +487,5 @@ if (curFile == 'index.html') { //if on landing page, adds event listener to scro
 if (curFile == 'forest.html') {
     hikeGen.fillPage(pageForest);
     hikeGen.init(pageForest);
+    console.log(pageForest);
 }
