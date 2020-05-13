@@ -22,7 +22,7 @@ body {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.7;
-    background-color: #28b485;
+    background-color: #28b4a1;
     color: #777;
     padding: 0rem 2rem;
 }
@@ -38,9 +38,10 @@ body {
     width: 80%;
 
     background: linear-gradient(
-        rgba(26, 116, 86, 0.74),
-        rgba(40, 180, 133, 0.747)),
-        url(../img_backgrounds/background-vector.png);
+        rgba(26, 116, 94, 0.74),
+        rgba(40, 180, 173, 0.747)),
+        url(../img_backgrounds/background-page-coast3.jpg);
+    background-size: 100%;
     background-position: center;
 
     z-index: -1;
@@ -78,7 +79,7 @@ body {
     top: 0%;
     width: 100%;
     height: 5rem;
-    background-color: #55c57a;
+    background-color: #55c5a3;
     border-radius: 0px 0px 0px 20px;
     box-shadow: 0.5px 5px 10px rgba(34, 34, 34, 0.747);
 
@@ -137,7 +138,7 @@ body {
     margin-top: 1.156rem;
     min-width: 10rem;
     max-width: 10rem;
-    background-color: #55c57a;
+    background-color: #55c5a3;
     border-radius: 0px 0px 20px 20px;
     box-shadow: 2px 5px 5px rgba(34, 34, 34, 0.699);
     overflow: hidden;
@@ -158,8 +159,8 @@ body {
     transition: all 300ms;
 }
 .hover-content a:hover {
-    color: #7ed56f;
-    background-color: #28b485;
+    color: #fff;
+    background-color: #19d19a;
     transform: scale(1);
 
     transition: all 300ms;
@@ -172,9 +173,9 @@ header {
     box-sizing: content-box;
     height: 50rem;
     background: linear-gradient(
-        rgba(126, 213, 111, 0.411),
-        rgba(40, 180, 133, 0.616)),
-        url(../img_backgrounds/background-forest2.jpg);
+        rgba(111, 213, 191, 0.411),
+        rgba(40, 159, 180, 0.616)),
+        url(../img_backgrounds/background-coast5.jpg);
     background-position: center;
     background-size: cover;
     clip-path: circle(68% at 50% 0);
@@ -317,9 +318,9 @@ main {
     width: 67%;
     height: 100%;
     background: linear-gradient(
-        #55c57a,
-        #55c57af8,
-        #55c57a8a
+        #55c5a3,
+        #55c5a3f8,
+        #55c5a38a
     );
     border-radius: 0px 0px 20px 20px;
 }
@@ -475,6 +476,12 @@ main {
     header {
         height: 65rem;
         margin-bottom: -20rem;
+        background-position: -40rem -15rem;
+        background-size: cover;
+    }
+
+    .background-stripe {
+        background-size: cover;
     }
 
     .title-primary {

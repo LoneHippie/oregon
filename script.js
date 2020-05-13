@@ -221,7 +221,7 @@ const dataBase = (function(){
 
     const trail32 = new Hike('Haystack Rock', 2, [4], 0, false, '45.884768,-123.966935', false, '032');
     const trail33 = new Hike('Munson Creek Falls', 2, [0], 1, false, '45.365640,-123.773530', false, '033');
-    const trail34 = new Hike('Devils Punchbowl', [4], 0, false, '44.747158,-124.064941', false, '034');
+    const trail34 = new Hike('Devils Punchbowl', 2, [4], 0, false, '44.747158,-124.064941', false, '034');
     const trail35 = new Hike('Thor\'s Well', 2, [4], 0, false, '44.278446,-124.113517', false, '035');
     const trail36 = new Hike('Cape Arago', 2, [4], 0, false, '43.306290,-124.398672', false, '036');
     const trail37 = new Hike('Bandon Beach', 2, [4], 0, false, '43.105380,-124.433674', false, '037');
@@ -321,7 +321,7 @@ const hikeGen = (function(){
 
         pageArray.forEach((el, index) => { //creates the html section for each hike, still need to add some code for getting the right images and css classes
 
-            html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi explicabo nobis, doloribus soluta rerum repellat eveniet, laborum, placeat assumenda quibusdam delectus! Non voluptates earum quam excepturi perspiciatis quisquam praesentium.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, et harum, eveniet esse sequi quod debitis repellendus maxime distinctio deserunt inventore minima adipisci nesciunt dolorum est possimus error incidunt. Distinctio.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam corrupti veritatis illum, quas officiis quo provident voluptatem vero, quibusdam recusandae totam in aliquid nihil quis omnis? Delectus, voluptates quaerat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia dolor laborum consequatur temporibus, tempora quaerat laboriosam est obcaecati! Reiciendis neque odio ut laborum, saepe labore vero provident id a veritatis.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae perspiciatis esse nisi provident, ipsam veniam quia ea consequatur dolore excepturi commodi dolorem sunt repellat inventore! Recusandae ipsam cum a!</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
+            html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi explicabo nobis, doloribus soluta rerum repellat eveniet, laborum, placeat assumenda quibusdam delectus! Non voluptates earum quam excepturi perspiciatis quisquam praesentium.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, et harum, eveniet esse sequi quod debitis repellendus maxime distinctio deserunt inventore minima adipisci nesciunt dolorum est possimus error incidunt. Distinctio.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam corrupti veritatis illum, quas officiis quo provident voluptatem vero, quibusdam recusandae totam in aliquid nihil quis omnis? Delectus, voluptates quaerat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia dolor laborum consequatur temporibus, tempora quaerat laboriosam est obcaecati! Reiciendis neque odio ut laborum, saepe labore vero provident id a veritatis.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae perspiciatis esse nisi provident, ipsam veniam quia ea consequatur dolore excepturi commodi dolorem sunt repellat inventore! Recusandae ipsam cum a!</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" id="btn-map-%index%" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
 
             newHtml = html.replace('%name%,', index);
             newHtml = newHtml.replace('%name%', el.name);
@@ -342,6 +342,7 @@ const hikeGen = (function(){
             const iconRiver = '<img class="type" src="../img_icons/icon-type-river.png">'; //1
             const iconLake = '<img class="type" src="../img_icons/icon-type-lake.png">'; //2
             const iconHotspring = '<img class="type" src="../img_icons/icon-type-hotspring.png"></img>'; //3
+            const iconDestination = '<img class="type" src="../img_icons/icon-type-destination.png"></img>' //4
 
             if (el.typeNum[0] == 0) { //sorts and replaces icon images
                 newHtml = newHtml.replace('%typeIcons%', iconWaterfall);
@@ -387,7 +388,10 @@ const hikeGen = (function(){
                 }
 
             } else if (el.typeNum[0] == 3) {
-                newHtml = newHtml.replace('%typeIcons%', iconHotspring);
+                newHtml = newHtml.replace('%typeIcons%', iconHotspring); 
+
+            } else if (el.typeNum[0] == 4) {
+                newHtml = newHtml.replace('%typeIcons%', iconDestination);
 
             } else {
                 console.log('error, type combination not found');
@@ -450,6 +454,13 @@ const hikeGen = (function(){
                     toggleDescActive();
                     openDescription(i);
                 };
+
+                if (event.toElement.id === `btn-map-${i}`) { //functionality for map/location button
+                    const mapPre = 'https://www.google.com/maps/place/';
+                    let mapCoord = pageArray[i].coords;
+
+                    window.open(mapPre + mapCoord);
+                };
             };
         });
     };
@@ -468,6 +479,8 @@ const hikeGen = (function(){
 })();
 
 const pageForest = dataBase.getTrails().forest;
+const pageDesert = dataBase.getTrails().desert;
+const pageCoast = dataBase.getTrails().coast;
 
 if (curFile == 'index.html') { //if on landing page, adds event listener to scroll button and gets quoteGen function from dataBase
     document.getElementById('btn-scroll').addEventListener('click', function() { //smooth scroll down to table
@@ -488,4 +501,16 @@ if (curFile == 'forest.html') {
     hikeGen.fillPage(pageForest);
     hikeGen.init(pageForest);
     console.log(pageForest);
+}
+
+if (curFile == 'desert.html') {
+    hikeGen.fillPage(pageDesert);
+    hikeGen.init(pageDesert);
+    console.log(pageDesert);
+}
+
+if (curFile == 'coast.html') {
+    hikeGen.fillPage(pageCoast);
+    hikeGen.init(pageCoast);
+    console.log(pageCoast);
 }

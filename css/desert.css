@@ -5,6 +5,10 @@ Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 
+Light yellow: #FDEE73
+Medium yellow: #FDDC5C
+Dark Yellow: #FCC006
+
 */
 
 * {
@@ -22,7 +26,7 @@ body {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.7;
-    background-color: #28b485;
+    background-color: #86d660;
     color: #777;
     padding: 0rem 2rem;
 }
@@ -38,10 +42,11 @@ body {
     width: 80%;
 
     background: linear-gradient(
-        rgba(26, 116, 86, 0.74),
-        rgba(40, 180, 133, 0.747)),
-        url(../img_backgrounds/background-vector.png);
+        rgba(70, 116, 26, 0.623),
+        rgba(159, 180, 40, 0.658)),
+        url(../img_backgrounds/background-desert2.jpg);
     background-position: center;
+    background-size: cover;
 
     z-index: -1;
 }
@@ -78,7 +83,7 @@ body {
     top: 0%;
     width: 100%;
     height: 5rem;
-    background-color: #55c57a;
+    background-color: #7dd841;
     border-radius: 0px 0px 0px 20px;
     box-shadow: 0.5px 5px 10px rgba(34, 34, 34, 0.747);
 
@@ -137,7 +142,7 @@ body {
     margin-top: 1.156rem;
     min-width: 10rem;
     max-width: 10rem;
-    background-color: #55c57a;
+    background-color: #7dd841;
     border-radius: 0px 0px 20px 20px;
     box-shadow: 2px 5px 5px rgba(34, 34, 34, 0.699);
     overflow: hidden;
@@ -158,8 +163,8 @@ body {
     transition: all 300ms;
 }
 .hover-content a:hover {
-    color: #7ed56f;
-    background-color: #28b485;
+    color: #fff;
+    background-color: #83eb2e;
     transform: scale(1);
 
     transition: all 300ms;
@@ -172,9 +177,9 @@ header {
     box-sizing: content-box;
     height: 50rem;
     background: linear-gradient(
-        rgba(126, 213, 111, 0.411),
-        rgba(40, 180, 133, 0.616)),
-        url(../img_backgrounds/background-forest2.jpg);
+        rgba(157, 213, 111, 0.411),
+        rgba(108, 180, 40, 0.616)),
+        url(../img_backgrounds/background-desert3.jpg);
     background-position: center;
     background-size: cover;
     clip-path: circle(68% at 50% 0);
@@ -317,9 +322,9 @@ main {
     width: 67%;
     height: 100%;
     background: linear-gradient(
-        #55c57a,
-        #55c57af8,
-        #55c57a8a
+        #82c555,
+        #82c555f3,
+        #82c5559d
     );
     border-radius: 0px 0px 20px 20px;
 }
