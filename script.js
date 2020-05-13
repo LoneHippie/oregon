@@ -12,6 +12,10 @@ if (curFile == 'index.html') {
     console.log('positive ID: index');
 } else if (curFile == 'forest.html') {
     console.log('positive ID: forest');
+} else if (curFile == 'desert.html') {
+    console.log('positive ID: desert')
+} else if (curFile == 'coast.html') {
+    console.log('positive ID: coast')
 } else {
     console.log('negative ID: other page');
 };
@@ -500,17 +504,14 @@ if (curFile == 'index.html') { //if on landing page, adds event listener to scro
 if (curFile == 'forest.html') {
     hikeGen.fillPage(pageForest);
     hikeGen.init(pageForest);
-    console.log(pageForest);
 }
 
 if (curFile == 'desert.html') {
     hikeGen.fillPage(pageDesert);
     hikeGen.init(pageDesert);
-    console.log(pageDesert);
 }
 
 if (curFile == 'coast.html') {
     hikeGen.fillPage(pageCoast);
     hikeGen.init(pageCoast);
-    console.log(pageCoast);
 }
