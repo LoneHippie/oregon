@@ -26,7 +26,7 @@ body {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.7;
-    background-color: #86d660;
+    background-color: #85d660;
     color: #777;
     padding: 0rem 2rem;
 }
@@ -139,7 +139,7 @@ body {
     display: none;
     position: absolute;
     text-align: center;
-    margin-top: 1.156rem;
+    margin-top: 1.4rem;
     min-width: 10rem;
     max-width: 10rem;
     background-color: #7dd841;
@@ -166,6 +166,26 @@ body {
     color: #fff;
     background-color: #83eb2e;
     transform: scale(1);
+
+    transition: all 300ms;
+}
+
+.hover-content span {
+    display: block;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.5rem 0rem;
+    text-decoration: none;
+
+    animation: tempLock 300ms;
+
+    transition: all 300ms;
+}
+.hover-content span:hover {
+    color: #fff;
+    background-color: #83eb2e;
+    transform: scale(1);
+    cursor: pointer;
 
     transition: all 300ms;
 }

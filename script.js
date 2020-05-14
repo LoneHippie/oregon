@@ -1,13 +1,12 @@
-//document.querySelector('.list').insertAdjacentHTML('beforebegin', "<p>Hellooooo</p>");
-
 //pageID for current file. Use to make functions inactive if they aren't relavant to a certain page
 
 let curFile = location.href.split("/").slice(-1);
 
-if (curFile == '') {
+if (curFile == '') { //curFile corection
     curFile = "index.html"
 };
 
+//tests for curFile
 if (curFile == 'index.html') {
     console.log('positive ID: index');
 } else if (curFile == 'forest.html') {
@@ -17,7 +16,7 @@ if (curFile == 'index.html') {
 } else if (curFile == 'coast.html') {
     console.log('positive ID: coast')
 } else {
-    console.log('negative ID: other page');
+    console.log('negative ID: not found');
 };
 
 const dataBase = (function(){
@@ -287,9 +286,6 @@ const dataBase = (function(){
 
 })();
 
-//console.log(dataBase.getTrails());
-//console.log(dataBase.trips);
-
 document.body.addEventListener('click', function(event) { //toggle dropdown menu items by clicking p tag spans (will have to modify per page if the nav bar is different)
     const menu1 = document.querySelector('.top-1');
     const menu2 = document.querySelector('.top-2');
@@ -316,7 +312,6 @@ document.body.addEventListener('click', function(event) { //toggle dropdown menu
     };
 
 });
-
 
 const hikeGen = (function(){
 
@@ -482,9 +477,163 @@ const hikeGen = (function(){
 
 })();
 
-const pageForest = dataBase.getTrails().forest;
-const pageDesert = dataBase.getTrails().desert;
-const pageCoast = dataBase.getTrails().coast;
+const pageSorter = (function(){
+
+    function sortShort(a, b) {
+        if (a.lengthKM < b.lengthKM){
+          return -1;
+        }
+    
+        if (a.lengthKM > b.lengthKM){
+            return 1;
+        }
+    
+        return 0;
+    };
+
+    function sortMedium(array) {
+        if (array.length === 'medium'){
+          return -1;
+        } else {
+          return 1;
+        }
+    };
+    
+    function sortLong(a, b) {
+        if (a.lengthKM > b.lengthKM){
+          return -1;
+        }
+    
+        if (a.lengthKM < b.lengthKM){
+            return 1;
+        }
+    
+        return 0;
+    };
+
+    function sortWaterfall(array) {
+        if (array.typeNum.includes(0)) {
+            return -1;
+        } else {
+            return 1;
+        }
+    };
+    
+    function sortRiver(array) {
+        if (array.typeNum.includes(1)) {
+            return -1;
+        } else {
+            return 1;
+        }
+    };
+    
+    function sortLake(array) {
+        if (array.typeNum.includes(2)) {
+          return -1;
+        }
+        else {
+          return 1;
+        }
+    };
+    
+    function sortHotspring(array) {
+        if (array.typeNum.includes(3)) {
+          return -1;
+        }
+        else {
+          return 1;
+        }
+    };
+
+
+    function buttonEvents(curArray) {
+        const genNode = document.getElementById('genPoint');
+        let curList = curArray;
+
+        document.body.addEventListener('click', function(event) {
+            switch(event.toElement.id) {
+                case 'sort-short':
+                    console.log('test short');
+                    curlist = curArray.sort(sortShort);
+                
+                    document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
+
+                    genNode.innerHTML = '';
+                    hikeGen.fillPage(curlist);
+                    break;
+                case 'sort-medium':
+                    console.log('test medium');
+                    curlist = curArray.sort(sortMedium);
+
+                    document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
+
+                    genNode.innerHTML = '';
+                    hikeGen.fillPage(curlist);
+                    break;
+                case 'sort-long':
+                    console.log('test long');
+                    curlist = curArray.sort(sortLong);
+
+                    document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
+
+                    genNode.innerHTML = '';
+                    hikeGen.fillPage(curlist);
+                    break;
+            };
+
+            switch(event.toElement.id) {
+                case 'sort-waterfall':
+                    console.log('test Waterfall');
+                    curlist = curArray.sort(sortWaterfall);
+                
+                    document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
+
+                    genNode.innerHTML = '';
+                    hikeGen.fillPage(curlist);
+                    break;
+                case 'sort-river':
+                    console.log('test River');
+                    curlist = curArray.sort(sortRiver);
+
+                    document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
+
+                    genNode.innerHTML = '';
+                    hikeGen.fillPage(curlist);
+                    break;
+                case 'sort-lake':
+                    console.log('test Lake');
+                    curlist = curArray.sort(sortLake);
+
+                    document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
+
+                    genNode.innerHTML = '';
+                    hikeGen.fillPage(curlist);
+                    break;
+                case 'sort-hotspring':
+                    console.log('test Hotspring');
+                    curlist = curArray.sort(sortHotspring);
+
+                    document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
+
+                    genNode.innerHTML = '';
+                    hikeGen.fillPage(curlist);
+                    break;
+            };
+        });
+    };
+      
+    return {
+        sort: function(pageArray) {
+            buttonEvents(pageArray);
+        }
+    };
+
+})();
+
+let pageForest = dataBase.getTrails().forest;
+let pageDesert = dataBase.getTrails().desert;
+let pageCoast = dataBase.getTrails().coast;
+
 
 if (curFile == 'index.html') { //if on landing page, adds event listener to scroll button and gets quoteGen function from dataBase
     document.getElementById('btn-scroll').addEventListener('click', function() { //smooth scroll down to table
@@ -502,16 +651,29 @@ if (curFile == 'index.html') { //if on landing page, adds event listener to scro
 };
 
 if (curFile == 'forest.html') {
+    console.log(pageForest);
     hikeGen.fillPage(pageForest);
     hikeGen.init(pageForest);
-}
+
+    pageSorter.sort(pageForest);
+};
 
 if (curFile == 'desert.html') {
+    console.log(pageDesert);
     hikeGen.fillPage(pageDesert);
     hikeGen.init(pageDesert);
-}
+
+    pageSorter.sort(pageDesert);
+};
 
 if (curFile == 'coast.html') {
+    console.log(pageCoast);
     hikeGen.fillPage(pageCoast);
     hikeGen.init(pageCoast);
-}
+
+    pageSorter.sort(pageCoast);
+};
+
+
+
+
