@@ -260,12 +260,6 @@ const dataBase = (function(){
 
     return {
         quoteGen: function() {
-            let curFile = location.href.split("/").slice(-1);
-            
-            if (curFile == '') {
-                curFile = "index.html"
-            };
-
             if (curFile == 'index.html') {
                 let random = Math.floor(Math.random() * arrQuotes.length);
                 document.getElementById('quote').textContent = `"${arrQuotes[random]}"`;
@@ -315,6 +309,9 @@ document.body.addEventListener('click', function(event) { //toggle dropdown menu
 
 const hikeGen = (function(){
 
+//function that generates html for each hike in an array. Fills template with values related to each object
+//after html section is generated, unique CSS class is created for each instance to assign a matching background image
+
     function createlist(pageArray) {
         let html, newHtml;
 
@@ -326,7 +323,7 @@ const hikeGen = (function(){
             newHtml = newHtml.replace('%name%', el.name);
             newHtml = newHtml.replace('%imgID%', `back-image-${index + 1}`);
             
-            if (el.lengthKM == undefined || el.lengthKM == null) {
+            if (el.lengthKM == undefined || el.lengthKM == null || el.lengthKM == 0) {
                 newHtml = newHtml.replace('%lengthKM%', '');
                 newHtml = newHtml.replace('%lengthType%', '<img class="hike destination" id="hike-length" src="../img_icons/icon-trail-sign.png"></img>');
             } else {
@@ -413,7 +410,9 @@ const hikeGen = (function(){
 
     };
 
-    let descActive;
+//functions for creating/enabling button functionality for each hike instance
+
+    let descActive; //when true allows description toggling. Upon swap to false will close all descriptions for reset
 
     function toggleDescActive() { //toggles active class and checks to see if exists or not w/descActive boolean
         let active = document.querySelector('.active');
@@ -431,7 +430,7 @@ const hikeGen = (function(){
         if (descActive == true) {
             document.getElementById('desc-' + target).classList.toggle('active');
             document.getElementById('icons-' + target).classList.toggle('active');
-            // console.log('open sesame');
+            //console.log('open sesame');
         } else {
             document.getElementById('desc-' + target).classList.remove('active');
             document.getElementById('icons-' + target).classList.remove('active');
@@ -447,11 +446,12 @@ const hikeGen = (function(){
     };
 
     function buttonEvents(pageArray) {
-        document.body.addEventListener('click', function(event) {
+        document.body.addEventListener('click', function(event) { //functionality for description button
             for (i = 0; i < pageArray.length; i++) {
                 if (event.toElement.id === `btn-desc-${i}`) {
                     toggleDescActive();
                     openDescription(i);
+                    //console.log(i);
                 };
 
                 if (event.toElement.id === `btn-map-${i}`) { //functionality for map/location button
@@ -470,6 +470,10 @@ const hikeGen = (function(){
             toggleDescActive();
             buttonEvents(dataSet);
         },
+        reFillPage: function(dataSet) { //same as fill page but won't reset mess up the event listeners. Use after sorts
+            createlist(dataSet);
+            toggleDescActive();
+        },
         init: function(dataSet) {
             closeDescriptions(dataSet);
         }
@@ -479,12 +483,16 @@ const hikeGen = (function(){
 
 const pageSorter = (function(){
 
+//sorting functions for region pages
+
+//by length sorts
+
     function sortShort(a, b) {
-        if (a.lengthKM < b.lengthKM){
-          return -1;
-        }
-    
-        if (a.lengthKM > b.lengthKM){
+        if (a.lengthKM < b.lengthKM) {
+            return -1;
+        } 
+
+        if (a.lengthKM > b.lengthKM) {
             return 1;
         }
     
@@ -492,7 +500,7 @@ const pageSorter = (function(){
     };
 
     function sortMedium(array) {
-        if (array.length === 'medium'){
+        if (array.length === 'medium') {
           return -1;
         } else {
           return 1;
@@ -500,16 +508,18 @@ const pageSorter = (function(){
     };
     
     function sortLong(a, b) {
-        if (a.lengthKM > b.lengthKM){
+        if (a.lengthKM > b.lengthKM) {
           return -1;
         }
-    
-        if (a.lengthKM < b.lengthKM){
+
+        if (a.lengthKM < b.lengthKM) {
             return 1;
         }
     
         return 0;
     };
+
+//by type sorts
 
     function sortWaterfall(array) {
         if (array.typeNum.includes(0)) {
@@ -550,8 +560,8 @@ const pageSorter = (function(){
         const genNode = document.getElementById('genPoint');
         let curList = curArray;
 
-        document.body.addEventListener('click', function(event) {
-            switch(event.toElement.id) {
+        document.body.addEventListener('click', function(event) { 
+            switch(event.toElement.id) { //functionality for "by length" sorting
                 case 'sort-short':
                     console.log('test short');
                     curlist = curArray.sort(sortShort);
@@ -559,7 +569,8 @@ const pageSorter = (function(){
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
 
                     genNode.innerHTML = '';
-                    hikeGen.fillPage(curlist);
+                    hikeGen.reFillPage(curlist);
+                    hikeGen.init(curList);
                     break;
                 case 'sort-medium':
                     console.log('test medium');
@@ -568,7 +579,8 @@ const pageSorter = (function(){
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
 
                     genNode.innerHTML = '';
-                    hikeGen.fillPage(curlist);
+                    hikeGen.reFillPage(curlist);
+                    hikeGen.init(curList);
                     break;
                 case 'sort-long':
                     console.log('test long');
@@ -577,11 +589,12 @@ const pageSorter = (function(){
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
 
                     genNode.innerHTML = '';
-                    hikeGen.fillPage(curlist);
+                    hikeGen.reFillPage(curlist);
+                    hikeGen.init(curList);
                     break;
             };
 
-            switch(event.toElement.id) {
+            switch(event.toElement.id) { //functionality for "by type" sorting
                 case 'sort-waterfall':
                     console.log('test Waterfall');
                     curlist = curArray.sort(sortWaterfall);
@@ -589,7 +602,8 @@ const pageSorter = (function(){
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
 
                     genNode.innerHTML = '';
-                    hikeGen.fillPage(curlist);
+                    hikeGen.reFillPage(curlist);
+                    hikeGen.init(curList);
                     break;
                 case 'sort-river':
                     console.log('test River');
@@ -598,7 +612,8 @@ const pageSorter = (function(){
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
 
                     genNode.innerHTML = '';
-                    hikeGen.fillPage(curlist);
+                    hikeGen.reFillPage(curlist);
+                    hikeGen.init(curList);
                     break;
                 case 'sort-lake':
                     console.log('test Lake');
@@ -607,7 +622,8 @@ const pageSorter = (function(){
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
 
                     genNode.innerHTML = '';
-                    hikeGen.fillPage(curlist);
+                    hikeGen.reFillPage(curlist);
+                    hikeGen.init(curList);
                     break;
                 case 'sort-hotspring':
                     console.log('test Hotspring');
@@ -616,7 +632,8 @@ const pageSorter = (function(){
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
 
                     genNode.innerHTML = '';
-                    hikeGen.fillPage(curlist);
+                    hikeGen.reFillPage(curlist);
+                    hikeGen.init(curList);
                     break;
             };
         });
@@ -625,6 +642,9 @@ const pageSorter = (function(){
     return {
         sort: function(pageArray) {
             buttonEvents(pageArray);
+        },
+        sortInit: function(pageArray) {
+            sortShort(pageArray);
         }
     };
 
@@ -652,6 +672,7 @@ if (curFile == 'index.html') { //if on landing page, adds event listener to scro
 
 if (curFile == 'forest.html') {
     console.log(pageForest);
+
     hikeGen.fillPage(pageForest);
     hikeGen.init(pageForest);
 
@@ -660,6 +681,7 @@ if (curFile == 'forest.html') {
 
 if (curFile == 'desert.html') {
     console.log(pageDesert);
+
     hikeGen.fillPage(pageDesert);
     hikeGen.init(pageDesert);
 
@@ -668,12 +690,10 @@ if (curFile == 'desert.html') {
 
 if (curFile == 'coast.html') {
     console.log(pageCoast);
+
     hikeGen.fillPage(pageCoast);
     hikeGen.init(pageCoast);
 
     pageSorter.sort(pageCoast);
 };
-
-
-
 

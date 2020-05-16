@@ -22,7 +22,10 @@ body {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.7;
-    background-color: #28b4a1;
+    background: linear-gradient(
+        #28b4a1d7,
+        #28b4b4
+    );
     color: #777;
     padding: 0rem 2rem;
 }
