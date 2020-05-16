@@ -33,6 +33,7 @@ const dataBase = (function(){
         this.coords = coords;
         this.closed = closed; //true or false for if trail is currently closed
         this.id = picID;
+        this.description;
         this.region;
         this.type = [];
         this.length;
@@ -240,7 +241,7 @@ const dataBase = (function(){
     const trailsDesert = [trail23, trail24, trail25, trail26, trail27, trail28]; //All desert hikes
     const trailsCoast = [trail29, trail30, trail31, trail32, trail33, trail34, trail35, trail36, trail37, trail38, trail39, trail40]; //All coast hikes
 
-    const trailsAll = [trailsForest, trailsDesert, trailsCoast];
+    const trailsAll = trailsForest.concat(trailsDesert).concat(trailsCoast);
 
 //Road Trips
 
@@ -280,6 +281,98 @@ const dataBase = (function(){
 
 })();
 
+const descriptionData = (function(){
+
+    const all = dataBase.getTrails().all;
+
+    all[0].description = 'Punchbowl Falls is a short section of Eagle Creek, one of the quintessential hike in the Columbia River Gorge, boasting dozens of spectacular waterfalls, tall basalt cliffs, and the lush temperate rain forests that so characterize the Pacific Northwest. It is considered by many to be one of the most beautiful hiking destinations in the Northwest, and if you have the time, continuing on to the trail to Tunnel Falls is highly recommended. This short trail will bring you past several waterfalls on the way to Punchbowl Falls, a pristine pool of clear water that one could easily spend the afternoon at. While it might be tempting to go rock diving here, please don\'t, the signs are there for a reason.';
+
+    all[1].description = 'Tunnel Falls is a longer section of Eagle Creek, and possibly the best and most beautiful intoductory hike for anyone new to exploring the region. This long out and back trail is dotted with many other waterfalls along stunning basalt cliffs, cold streams, high bridges and endless expanse of unique geological formations and flora. While this hike is highly recommended, it\'s worth noting that this trail can take several hours and is somewhat challenging. While it might be great for a few friends or a couple, this may not be the ideal family hike.';
+
+    all[2].description = 'Perhaps the most iconic waterfall in Oregon, Multnomah Falls is a the tallest waterfall in the state and offers both a picturesque view and fantastic hike. Keep in mind that this is a large tourist destination, both for locals and visitors, so showing up early in the morning during tourist season is recommended to avoid massive crowds near the waterfall\'s base. While the main out and back hike isn\'t too challenging, the end connects to several trails leading to other waterfalls in the area. If you have the time, it\'s recommended to check some of these trails out as well and see all that the Columbia Gorge has to offer.';
+
+    all[3]. description = 'Oneonta Gorge is a out and back water hike through a mossy gorge that ends at lower Oneonta Falls. One of the many gems of the Columbia Gorge, this waterfall is surprisingly hidden and is not accessible by trail. Rather you must walk up the creek bed, over a large and perhaps unstable log jam, through the gorge, and up to your waist (or even torso depending on your height and the time of year) in water until you reach the end of the hike. Definitely an adventurous experience, but be prepared to get cold and wet and bring spare clothes/towels if needed.';
+
+    all[4].description = 'Ramona Falls is a beautiful loop hike tucked away deep in the forests of Mt Hood. A moderate length trail without too much incline, but is not without it\'s unique challenges: where bridges once passed over the Sandy River crossing, a series of logs now take its place, and while crossing is not difficult, it\'s worth taking into consideration, especially if the Sandy River is running fast and deep. Ramona Falls itself is stunning - a unique rock face that splits the waterfall into dozens of fractals of itself before pooling at the bottom and running elegantly into a stream below a nearby foot bridge. A fantastic way to spend a summer day';
+
+    all[5].description = 'Little Crater Lake, a lovely sapphire-hued artesian spring formed in a dissolving layer of siltstone, is less than a kilometer from a trailhead via a universal access path. Those who are able to go farther can hike out through a lush meadow to the Pacific Crest Trail and then walk south for about another kilometer to view more lush marshes where Crater Creek forms an arm of Timothy Lake. The sheer blueness and opacity of this spring is stunning, and you can expect to be able to see all the way to the bottom year-round.';
+
+    all[6].description = 'The Trail of Ten Falls is located in Silver Falls State Park, the crown jewel of the Oregon State Parks system, being both Oregon\'s largest State Park (9,000 acres) and boasting one of America\'s most impressive waterfall day-hikes. There are no less than ten falls on this 12.5 km loop (which can be reduced via two cutoff trails), and most of them are flat-out gorgeous. Unfortunately, while the hike is not very strenuous (most people will handle the changes in elevation over the course of three to five hours just fine), dogs are not allowed on the Canyon Trail portion of the hike — which is where the waterfalls are found. While there are several points where turning back is possible, it\'s highly recommended to see every waterfall this trail has to offer. The waterfalls along this trail range from massive single falls to double falls and even include waterfalls you can walk behind. When we first hiked this trail, we were blown away not just by the quantity and quality of the falls, but by how long it took us to get around to exploring it. Definitely move this trip up a few spots on your list.';
+
+    all[7].description = 'Bagby Trail is a medium length out and back trail ending at Bagby Hot Springs. The trail follows Hot Springs Fork of the Collowash River and passes through old growth trees on the way Bagby Hot Springs. Bagby Hot Springs is a natural free to use site (aside from a $5.00 per person fee) with several open air tubs that can be drained and filled with naturally heated spring water via pumps by each tub. It\'s highly recommended to drain a tub before use to clean it out, and HIGHLY recommended to not touch hot spring water as it\'s flowing from a pipe or before adding a few buckets of cold water (which can be found near each tub), as the water can be extremely hot.';
+
+    all[8].description = 'Opal Creek Trail is a lengthy out and back hike that goes through Jawbone Flats on it\'s way to Opal Pool. After the first few kilometers you\'ll pass a few historic attractions in the forest before arriving to a fork in the trail. Continuing straight will lead you first through the historic mining town of Jawbone Flats, a collection of buildings built between 1929 and 1932 now operating an education and hospitality center. If you\'re just interested in the nature and getting to the end of the hike, take the right hand path over a log bridge to go straight towards Opal Pool, a pristine swimming hole at the head of a chasm in Opal Creek.';
+
+    all[9].description = 'This short, easy out and back trail descends gradually with occasional switchbacks down to Spirit Falls, a fairy tale-esque waterfall that drops 18 meters over a mossy rock wall into a shallow pool inhabited by frogs and salamanders. Spirit Falls is generally shaded by the surrounding woods; however, in late spring and summer, sunlight reaches the base of the falls in the early afternoon hours and makes for a lovely photograph. The trail is also in very close proximity to other waterfall hikes like Pinard Falls, and checking out other short waterfall hikes in the area is definitely recommended.';
+
+    all[10].description = 'Pinard Falls is an impressive waterfall that drops over a 32 meter tall basalt cliffs. A dense, lush forest surrounds the area and shades the waterfall most of the day; however, during summer afternoons, sunlight cuts through the mist to reach the base of the waterfall. Definitely a big part of the magic of the Umpqua forest. The trail is also in very close proximity to other waterfall hikes like Spirit Falls, and checking out other short waterfall hikes in the area is highly recommended.'
+
+    all[11].description = 'A short yet pleasant loop hike will take you right to Steamboat Falls, a series of swimming holes at the base of a wide waterfall used by salmon as a natural ladder to climb upsteam on Steamboat Creek. While the waterfalls here may be dwarfed by others in the Umqpua forest, it remains a unique and fun site to check out while in the area. Be wary of poison oak along patches of the trail.';
+
+    all[12].description = 'Nestled among the big trees in an old growth forest, this short out and back forest trail leads to a cascading two-tier waterfall that plummet over 30 meters into a pool below. The width of the waterfall varies greatly between seasons, fanning all the way out in the winter and spring to a narrow spout during the summer.';
+
+    all[13].description = 'This short out and back trail leads to Grotto Falls, where water splits and plunges 30 meters over a deeply recessed cliff, creating a double curtain of falling water that visitors can pass behind. The falls are located in a well-shaded river gorge that sees sunlight for only a few hours in the middle of the day. The first part of the trail passes through old-growth forest and lush understory where Oregon grape is abundant; the trail then arrives at the waterfall and passes behind the falls and through the deep, natural cavern. The water flow is at its highest in the spring after snowmelt.';
+
+    all[14].description = 'Another short out and back trail that leads to yet another unique waterall. Located along with Hemlock Falls next to the Lake of the Woods campground, the trail travels through older forest and over a wooden footbridge, then comes to an end at a tall step. Climbing down the step will allow you to see the falls from the rocky base, although the view from the end of the trail is beautiful by itself. In the spring, wildflowers and rhododendron grow along the trail, while in the fall, vine maples turn the understory shades of red, orange, and yellow. Yakso Falls is a fine example of a classic fan form waterfall, and is yet more proof than while Oregon may not have some of the tallest waterfalls in the country, it houses some of the prettiest.';
+
+    all[15].description = 'The Umpqua forest is bursting with short out and back waterfall hikes, and this is another one of them. Located along with Yakso Falls next to the Lake of the Woods campground, this trail boasts impressive greenery that rivals the beauty of the waterfall itself. Hemlock falls drops into stunning gorge of fallen trees, creating quite the display. Trail may be blocked by fallen trees.';
+
+    all[16].description = 'A true gem of the Umpqua forest and perhaps one of the most stunning waterfalls in Oregon. A short out and back trail leads to a viewing platform from which hikers can view a river cascading through a narrow gorge until dropping into a breath taking 35 meter two-tier waterfall that shoots from a cliff of ornate volcanic basalt. Some other sources might mention other sights and spots that can be reached by hoping the fence near the end of the trail, but this is ill advised and very dangerous. Please enjoy the waterfall and hike as it is.';
+
+    all[17].description = 'This short loop hike leads to the beautiful Watson Falls, the highest water fall in southwest Oregon with its 89 meter drop. With how short the trail is coupled with the sheer scale and beauty of the waterfall, this is one not to miss when visiting the Umpqua forest.';
+
+    all[18].description = 'This short out and back trail drops down into the North Umpqua Canyon for an impressive view of Lemolo Falls as it cascades 30 meters to the canyon bottom. A spur trail accesses the bottom of the canyon below the falls for those interested in getting a close look. The trail itself can be difficult to access due to fallen trees, mud, and other debris, but shouldn\'t be too much trouble to enter on foot.';
+
+    all[19].description = 'A short yet steep out and back trail leads to the Umpqua Hot Springs, a beautiful set of cascading naturally heated pools that have been naturally eroded out of the rocky hillside leading all the way down to a river below. There are several natural pools to soak in including a covered one and a sectioned off pool in the river below. The pools furtherst up the hillside are the hottest, with most of the lower pools being runoffs of the upper ones that gradually cool off as they descend down the hill. While this spot was once considered somewhat secret, it\'s now often crowded during most of the summer, and nudity is very common. Either way, if you can manage to get a pool/are willing to wait for one, or are planning on coming off-season, this is a hike you can\'t afford to miss.';
+
+    all[20].description = 'One of the great landmarks of Oregon, Crater Lake is a sight to behold, surrounded by massive cliffs and filled with deep blue water. Formed 7,700 years ago by the collapse of Mount Mazama, Crater Lake is the deepest lake in the United States with a depth of 594 meters. The lake is also host to two small islands sitting near the center, adding to the lake\'s great beauty. A must see spot in Southern Oregon.';
+
+    all[21].description = 'This short out and back trail passes through a narrow crevice in a large boulder, then climbs alongside the creek through an old-growth forest. After a short hike, the trail reaches the base of the falls, where you can view the largest, bottommost tier tumbling over a mossy rock cliff. The trail then continues more steeply to a viewing platform where you can view the second to the last tier, before climbing to connect with the old North Umpqua Highway, Road 4710. From this vantage point, you can view the top of the falls descending into the gorge you just climbed through. One of the more impressive multi-tier waterfalls in the area, and definitely worth the short hike.';
+
+    all[22].description = 'Just over the border to Washington you\'ll find Maryhill Loops Road, an "abandoned" experimental road laid in 1911 that now acts as a pilgrimage spot for longboarders. Vehicular access is forbidden, but the long twisted downhill road remains well paved and open year-round to pedestrians and boarders alike, and is rented out yearly for the International Downhill Federation World Cup Series downhill longboarding and luge events.';
+
+    all[23].description = 'While maybe not what one expects to see in the desert, this short out and back trail is a beautiful and pleasant surprise. From the beginning of the trail the two-tier White River Falls is already viewable. On the way down to the base of the falls and the swimming hole, hikers will come across an abandoned fully explorable hydroelectric plant. This hike makes for a great adventure with some friends, and the waterfall itself looks like something straight out of paradise.';
+
+    all[24].description = 'A true desert oasis, the Cove of Palisades is a large lake surrounded by tall desert cliffs. Waterfalls trickle down the sides of rocky walls as the confluence of the Deschutes, Crooked and Metolius rivers form this beautiful lake that glows green in the summer from blue-green algae. Whether you come to camp, boat, swim or look for hikes, this desert oasis is a must when visiting the Oregon desert.';
+
+    all[25].description = 'A rock climbers paradise. Smith Rock state park is a fantastic destination that boasts several steep rewarding hikes, biking trails, stunning views, rocky spires, a calm river, and endless options for climbing. Great for sight seeing and the casual hiker, but an athlete could spend days here and not run out of things to do. Worth checking out for the spectacle alone.';
+
+    all[26].description = 'One of Oregon\'s many ghost towns that hasn\'t moved much out of the days of the Wild West. Once a transportation hub and called the "Wool Capital of the World," Shaniko is now a town of less than 40 people and features early 20th century architecture that likely hasn\'t changed much since the town\'s decline. A nice stop or drive through destination for a desert trip.';
+
+    all[27].description = 'One of Oregon\'s ghost towns that, while it was never large, certaintly hasn\'t grown or modernized much. It\'s small size (less than 50 people) might not make it unique among ghost towns, but the bizarre history around it and the cult of Rajneeshpuram definitely do. In the 1980\'s the town of Antelope was breifly taken over by a nearby religious movement known as Rajneeshpuram in a strange story of political takeovers, attempted assassinations, and the largest to date bioterror attack in United States history. Some small remnants from the abandoned settlemnt of Rajneesh can still be found near Antelope.';
+
+    all[28].description = 'A beautiful rocky beach littered with driftwood logs surrounded by towering trees. Gorgeous and off the beaten path, this beach feels like a bit of a hidden gem.';
+
+    all[29].description = 'Considered by many to be the prettiest beach in Washington, Ruby Beach is known for its large ammount of sea stacks, driftwood, and ruby-like crystals that make up some of the sand.';
+
+    all[30].description = 'Cape Disappointment is one of the foggiest places in the United States, and home to several beaches, lighthouses, hikes, and historic military installments. Do some research prior to arriving in order to appreciate some of the history this park has to offer, but make sure you check out Dead Man\'s Cove, a small but unforgettable beach along one of the park\'s trails.';
+
+    all[31].description = 'This massive 72 meter tall sea stack might seem familiar to some, being featured in movies such as The Goonies, 1941, and Kindergarten Cop. Pop culture aspects aside, Haystack Rock remains a beautiful natural formation and is one of the largest such rock formations in the world. This landmark also houses many tide pools and serves as a nesting site for many seabirds, such as terns and puffins.';
+
+    all[32].description = 'Even if you were considering the possibility of running into waterfalls even near the coast of Oregon, you likely weren\'t considering the possibility of finding one that\'s nearly 100 meters tall. This short out and back hike will take you right to a viewing point for the waterfall along an easy trail lined with ripe salmonberries and watermelon berries during the summer.';
+
+    all[33].description = 'During winter storms, water from the restless ocean slams with a thundering roar into a hollow rock formation shaped like a huge punch bowl. The surf churns, foams, and swirls as it mixes a violent brew. The punch bowl was probably created by the collapse of the roof over two sea caves, then shaped by wave action. The park is a popular whale watching site and displays an intriguing geology.';
+
+    all[34].description = 'Although known as the drainpipe of the Pacific, Thor\'s Well is actually a hole in the rock that only appears to drain water from the ocean, but from the ouside appears to be a gaping, seemingly bottomless sinkhole swallows the unbroken stream of seawater around it. As strangely beautiful as the well may be, be sure to keep a comfortable distance; it may not be bottomless, but if you fall in, good luck trying to get out.';
+
+    all[35].description = 'Cape Arago is one of the more scenic coastal parks with several relatively short hikes, beaches filled with tide pools, and spots to view offshore colonies of seals and sea lions.';
+
+    all[36].description = 'One of the most scenic beaches in Oregon, Bandon beach is home to dozens of beautiful sea stacks and rock formations that are just asking to be explored.';
+
+    all[37].description = 'Cape Blanco feels lonely in a beautiful way: expansive, open, and nary another person to distract from the sound of crashing waves against the cold foggy shore. At the end of the cape sits a charming old lighthouse run by a lovely elderly couple that offer cheap tours.';
+
+    all[38].description = 'Tucked away on the southern Oregon coast is a beautiful hidden gem called the Natural Bridges Cove. This unique natural wonder was formed over thousands of years by the gradual shifting of sea and stone, resulting in beautiful natural arches nestled into a secluded cove. The viewpoint overlooking the Natural Bridges can be reached on a short, easy stroll just off Highway 101, and makes for a truly magical day trip destination.';
+
+    all[39].description = 'This short loop trail follows a series of small footbridges deep into a green canyon. Lush, drooping ferns create hanging gardens, miniature waterfalls pour down rock faces, and moss wallpapers every surface. The walls grow taller and squeeze tighter as you travel. A very worthwhile detour in the Redwood section of highway 101.';
+
+    return {
+        test: function() {
+            //console.log(all);
+        }
+    };
+    
+})();
+
 document.body.addEventListener('click', function(event) { //toggle dropdown menu items by clicking p tag spans (will have to modify per page if the nav bar is different)
     const menu1 = document.querySelector('.top-1');
     const menu2 = document.querySelector('.top-2');
@@ -317,11 +410,17 @@ const hikeGen = (function(){
 
         pageArray.forEach((el, index) => { //creates the html section for each hike, still need to add some code for getting the right images and css classes
 
-            html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eligendi explicabo nobis, doloribus soluta rerum repellat eveniet, laborum, placeat assumenda quibusdam delectus! Non voluptates earum quam excepturi perspiciatis quisquam praesentium.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, et harum, eveniet esse sequi quod debitis repellendus maxime distinctio deserunt inventore minima adipisci nesciunt dolorum est possimus error incidunt. Distinctio.Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam corrupti veritatis illum, quas officiis quo provident voluptatem vero, quibusdam recusandae totam in aliquid nihil quis omnis? Delectus, voluptates quaerat?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia dolor laborum consequatur temporibus, tempora quaerat laboriosam est obcaecati! Reiciendis neque odio ut laborum, saepe labore vero provident id a veritatis.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum repudiandae perspiciatis esse nisi provident, ipsam veniam quia ea consequatur dolore excepturi commodi dolorem sunt repellat inventore! Recusandae ipsam cum a!</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" id="btn-map-%index%" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
+            html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">%description%</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" id="btn-map-%index%" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
 
             newHtml = html.replace('%name%,', index);
             newHtml = newHtml.replace('%name%', el.name);
             newHtml = newHtml.replace('%imgID%', `back-image-${index + 1}`);
+            
+            if (el.description == undefined) {
+                newHtml = newHtml.replace('%description%', 'Description coming soon');
+            } else {
+                newHtml = newHtml.replace('%description%', el.description);
+            };
             
             if (el.lengthKM == undefined || el.lengthKM == null || el.lengthKM == 0) {
                 newHtml = newHtml.replace('%lengthKM%', '');
@@ -563,7 +662,6 @@ const pageSorter = (function(){
         document.body.addEventListener('click', function(event) { 
             switch(event.toElement.id) { //functionality for "by length" sorting
                 case 'sort-short':
-                    console.log('test short');
                     curlist = curArray.sort(sortShort);
                 
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
@@ -573,7 +671,6 @@ const pageSorter = (function(){
                     hikeGen.init(curList);
                     break;
                 case 'sort-medium':
-                    console.log('test medium');
                     curlist = curArray.sort(sortMedium);
 
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
@@ -583,7 +680,6 @@ const pageSorter = (function(){
                     hikeGen.init(curList);
                     break;
                 case 'sort-long':
-                    console.log('test long');
                     curlist = curArray.sort(sortLong);
 
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
@@ -596,7 +692,6 @@ const pageSorter = (function(){
 
             switch(event.toElement.id) { //functionality for "by type" sorting
                 case 'sort-waterfall':
-                    console.log('test Waterfall');
                     curlist = curArray.sort(sortWaterfall);
                 
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
@@ -606,7 +701,6 @@ const pageSorter = (function(){
                     hikeGen.init(curList);
                     break;
                 case 'sort-river':
-                    console.log('test River');
                     curlist = curArray.sort(sortRiver);
 
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
@@ -616,7 +710,6 @@ const pageSorter = (function(){
                     hikeGen.init(curList);
                     break;
                 case 'sort-lake':
-                    console.log('test Lake');
                     curlist = curArray.sort(sortLake);
 
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
@@ -626,7 +719,6 @@ const pageSorter = (function(){
                     hikeGen.init(curList);
                     break;
                 case 'sort-hotspring':
-                    console.log('test Hotspring');
                     curlist = curArray.sort(sortHotspring);
 
                     document.getElementById('sort-refresh').scrollIntoView({block: "start", behavior: "smooth"});
@@ -671,29 +763,22 @@ if (curFile == 'index.html') { //if on landing page, adds event listener to scro
 };
 
 if (curFile == 'forest.html') {
-    console.log(pageForest);
-
     hikeGen.fillPage(pageForest);
     hikeGen.init(pageForest);
-
     pageSorter.sort(pageForest);
+
+    // descriptionData.test();
 };
 
 if (curFile == 'desert.html') {
-    console.log(pageDesert);
-
     hikeGen.fillPage(pageDesert);
     hikeGen.init(pageDesert);
-
     pageSorter.sort(pageDesert);
 };
 
 if (curFile == 'coast.html') {
-    console.log(pageCoast);
-
     hikeGen.fillPage(pageCoast);
     hikeGen.init(pageCoast);
-
     pageSorter.sort(pageCoast);
 };
 
