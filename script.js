@@ -12,9 +12,11 @@ if (curFile == 'index.html') {
 } else if (curFile == 'forest.html') {
     console.log('positive ID: forest');
 } else if (curFile == 'desert.html') {
-    console.log('positive ID: desert')
+    console.log('positive ID: desert');
 } else if (curFile == 'coast.html') {
-    console.log('positive ID: coast')
+    console.log('positive ID: coast'); 
+} else if (curFile == 'trip-umpqua.html') {
+    console.log('positive ID: trip-umpqua');
 } else {
     console.log('negative ID: not found');
 };
@@ -243,15 +245,32 @@ const dataBase = (function(){
 
     const trailsAll = trailsForest.concat(trailsDesert).concat(trailsCoast);
 
+    let trailsWaterfall, trailsRiver, trailsLake, trailsHotspring, trailsShort, trailsMedium, trailsLong;
+
+    let listWaterfall = [];
+    let listRiver = [];
+    let listLake = [];
+    let listHotspring = [];
+
+    let listShort = [];
+    let listMedium = [];
+    let listLong = [];
+
 //Road Trips
+
+    const tripUmpqua = [trailsForest[10], trailsForest[11], trailsForest[21], trailsForest[12], trailsForest[13], trailsForest[14], trailsForest[16], trailsForest[19]];
+    const tripCentral = [trailsDesert[0], trailsDesert[1], trailsDesert[4], trailsDesert[5], trailsDesert[2], trailsDesert[3]];
+    const trip101 = [trailsCoast[3], trailsCoast[4], trailsCoast[5], trailsCoast[6], trailsCoast[7], trailsCoast[8], trailsCoast[9], trailsCoast[10]];
+
+    const tripsAll = [tripUmpqua, tripCentral, trip101];
 
     const mapDir = 'https://www.google.com/maps/dir/';
 
-    const tripUmpqua = `${mapDir}/${trailsForest[10].coords}/${trailsForest[11].coords}/${trailsForest[21].coords}/${trailsForest[12].coords}/${trailsForest[13].coords}/${trailsForest[14].coords}/${trailsForest[16].coords}/${trailsForest[19].coords}/${trailsForest[17].coords}`;
-    const tripDesert = `${mapDir}/${trailsDesert[0].coords}/${trailsDesert[4].coords}/${trailsDesert[5].coords}/${trailsDesert[2].coords}/${trailsDesert[3].coords}`;
-    const tripCoast = `${mapDir}/${trailsCoast[3].coords}/${trailsCoast[4].coords}/${trailsCoast[5].coords}/${trailsCoast[6].coords}/${trailsCoast[7].coords}/${trailsCoast[8].coords}/${trailsCoast[9].coords}/${trailsCoast[10].coords}`;
+    const directionsUmpqua = `${mapDir}/${trailsForest[10].coords}/${trailsForest[11].coords}/${trailsForest[21].coords}/${trailsForest[12].coords}/${trailsForest[13].coords}/${trailsForest[14].coords}/${trailsForest[16].coords}/${trailsForest[19].coords}/${trailsForest[17].coords}`;
+    const directionsCentral = `${mapDir}/${trailsDesert[0].coords}/${trailsDesert[4].coords}/${trailsDesert[5].coords}/${trailsDesert[2].coords}/${trailsDesert[3].coords}`;
+    const directions101 = `${mapDir}/${trailsCoast[3].coords}/${trailsCoast[4].coords}/${trailsCoast[5].coords}/${trailsCoast[6].coords}/${trailsCoast[7].coords}/${trailsCoast[8].coords}/${trailsCoast[9].coords}/${trailsCoast[10].coords}`;
 
-    const tripAll = [tripUmpqua, tripDesert, tripCoast];
+    const directionsAll = [directionsUmpqua, directionsCentral, directions101];
 
 //Quotes
 
@@ -267,21 +286,78 @@ const dataBase = (function(){
             };
         },
 
-        trips: tripAll,
-
         getTrails: function() { //to call outside, dataBase.getTrails(); -> returns the object. ...().forest; returns just forest array
             return {
                 all: trailsAll,
                 forest: trailsForest,
                 desert: trailsDesert,
                 coast: trailsCoast,
+                trips: tripsAll,
+                tripDirections: directionsAll,
             };
+        },
+
+        fillTrails: function(allHikes) {
+            fillSortArr(allHikes);
         }
     };
 
 })();
 
-const descriptionData = (function(){
+const sortGen = (function() {
+
+    const allTrails = dataBase.getTrails().all;
+
+//Filter functions for generating new arrays
+
+    function getWaterfall(el) {
+        return el.typeNum.includes(0);
+    };
+    function getRiver(el) {
+        return el.typeNum.includes(1);
+    };
+    function getLake(el) {
+        return el.typeNum.includes(2);
+    };
+    function getHotspring(el) {
+        return el.typeNum.includes(3);
+    };
+
+    function getShort(el) {
+        return el.lengthKM > 0 && el.lengthKM <= 6;
+    };
+    function getMedium(el) {
+        return el.lengthKM > 6 && el.lengthKM <= 15;
+    };
+    function getLong(el) {
+        return el.lengthKM > 15;
+    };
+
+//New arrays for each type and length. Dependant on/defined by alltrails const in dataBase IIFE
+
+    const allWaterfalls = allTrails.filter(getWaterfall);
+    const allRivers = allTrails.filter(getRiver);
+    const allLakes = allTrails.filter(getLake);
+    const allHotsprings = allTrails.filter(getHotspring);
+
+    const allShort = allTrails.filter(getShort);
+    const allMedium = allTrails.filter(getMedium);
+    const allLong = allTrails.filter(getLong);
+
+    return {
+        allWaterfalls: allWaterfalls,
+        allRivers: allRivers,
+        allLakes: allLakes,
+        allHotsprings: allHotsprings,
+
+        allShort: allShort,
+        allMedium: allMedium,
+        allLong: allLong
+    };
+
+})();
+
+const descriptionData = (function(){ //IIFE that assigns unique descriptions to the this.description property of each trail
 
     const all = dataBase.getTrails().all;
 
@@ -365,12 +441,6 @@ const descriptionData = (function(){
 
     all[39].description = 'This short loop trail follows a series of small footbridges deep into a green canyon. Lush, drooping ferns create hanging gardens, miniature waterfalls pour down rock faces, and moss wallpapers every surface. The walls grow taller and squeeze tighter as you travel. A very worthwhile detour in the Redwood section of highway 101.';
 
-    return {
-        test: function() {
-            //console.log(all);
-        }
-    };
-    
 })();
 
 document.body.addEventListener('click', function(event) { //toggle dropdown menu items by clicking p tag spans (will have to modify per page if the nav bar is different)
@@ -395,7 +465,9 @@ document.body.addEventListener('click', function(event) { //toggle dropdown menu
     if (event.toElement.id !== 'focus-menu-1' && event.toElement.id !== 'focus-menu-2' && event.toElement.id !== 'focus-menu-3') {
         menu1.classList.remove('selected');
         menu2.classList.remove('selected');
+        if (curFile == 'forest.html' || curFile == 'desert.html' || curFile == 'coast.html') {
         menu3.classList.remove('selected');
+        }
     };
 
 });
@@ -410,7 +482,14 @@ const hikeGen = (function(){
 
         pageArray.forEach((el, index) => { //creates the html section for each hike, still need to add some code for getting the right images and css classes
 
-            html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">%description%</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" id="btn-map-%index%" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>'
+            //HTML template is determined by page type. Trip pages will not have a ui-directions button.
+            //May have to make similar if else statement when assigning button functionality to avoid errors
+
+            if (curFile == 'trip-umpqua.html' || curFile == 'trip-central.html' || curFile == 'trip-101.html') {
+                html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">%description%</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" id="btn-map-%index%" src="../img_ui/ui-location.png"></div></section>';
+            } else {
+                html = '<section class="hike-container"><div class="hike-top %imgID%"><div class="info-container"><span class="hike-name" id="hike-name">%name%</span><span class="hike-length" id="hike-lengthKM">%lengthKM%</span></div><div class="type-container" id="type-container-%index%">%typeIcons%</div><div class="difficulty-container">%lengthType%</div></div><div class="hike-bottom"><div class="description-holder"></div><div class="description-box" id="desc-%index%"><p class="description-text">%description%</p></div></div><div class="icon-container" id="icons-%index%"><img class="icon" id="btn-desc-%index%" src="../img_ui/ui-description.png"><img class="icon" id="btn-map-%index%" src="../img_ui/ui-location.png"><img class="icon" src="../img_ui/ui-directions2.png"></div></section>';
+            }
 
             newHtml = html.replace('%name%,', index);
             newHtml = newHtml.replace('%name%', el.name);
@@ -563,6 +642,12 @@ const hikeGen = (function(){
         });
     };
 
+    function buttonEventsTrip(pageDir) {
+        document.getElementById('trip-directions').addEventListener('click', function() {
+            window.open(pageDir);    
+        });
+    };
+
     return {
         fillPage: function(dataSet) {
             createlist(dataSet);
@@ -575,6 +660,9 @@ const hikeGen = (function(){
         },
         init: function(dataSet) {
             closeDescriptions(dataSet);
+        },
+        getTripDir: function(directions) {
+            buttonEventsTrip(directions);
         }
     };
 
@@ -746,6 +834,14 @@ let pageForest = dataBase.getTrails().forest;
 let pageDesert = dataBase.getTrails().desert;
 let pageCoast = dataBase.getTrails().coast;
 
+let pageTripUmpqua = dataBase.getTrails().trips[0];
+let directionsUmpqua = dataBase.getTrails().tripDirections[0];
+
+let pageTripCentral = dataBase.getTrails().trips[1];
+let directionsCentral = dataBase.getTrails().tripDirections[1];
+
+let pageTrip101 = dataBase.getTrails().trips[2];
+let directions101 = dataBase.getTrails().tripDirections[2];
 
 if (curFile == 'index.html') { //if on landing page, adds event listener to scroll button and gets quoteGen function from dataBase
     document.getElementById('btn-scroll').addEventListener('click', function() { //smooth scroll down to table
@@ -757,7 +853,7 @@ if (curFile == 'index.html') { //if on landing page, adds event listener to scro
         }, 150);
     });
 
-    document.getElementById('btn-home').style.pointerEvents = "none"; //disables home button on landing page
+    //document.getElementById('btn-home').style.pointerEvents = "none"; //disables home button on landing page
 
     dataBase.quoteGen();
 };
@@ -766,8 +862,6 @@ if (curFile == 'forest.html') {
     hikeGen.fillPage(pageForest);
     hikeGen.init(pageForest);
     pageSorter.sort(pageForest);
-
-    // descriptionData.test();
 };
 
 if (curFile == 'desert.html') {
@@ -781,4 +875,24 @@ if (curFile == 'coast.html') {
     hikeGen.init(pageCoast);
     pageSorter.sort(pageCoast);
 };
+
+if (curFile == 'trip-umpqua.html') {
+    hikeGen.fillPage(pageTripUmpqua);
+    hikeGen.init(pageTripUmpqua);
+    hikeGen.getTripDir(directionsUmpqua);
+};
+
+if (curFile == 'trip-central.html') {
+    hikeGen.fillPage(pageTripCentral);
+    hikeGen.init(pageTripCentral);
+    hikeGen.getTripDir(directionsCentral);
+};
+
+if (curFile == 'trip-101.html') {
+    hikeGen.fillPage(pageTrip101);
+    hikeGen.init(pageTrip101);
+    hikeGen.getTripDir(directions101);
+};
+
+//console.log(sortGen.allMedium);
 

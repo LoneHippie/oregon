@@ -46,6 +46,79 @@ body {
 
     /****** NAV BAR ******/
 
+/* .home-box {
+    display: block;
+}
+
+.btn-home {
+    position: absolute;
+    height: 3.2rem;
+
+    z-index: 100;
+}
+
+.top-nav {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 100%;
+    background-color: #55c57a;
+    display: flex;
+
+    z-index: 99;
+}
+
+.ul-menu {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.top {
+    display: block;
+    text-align: center;
+    font-weight: 400;
+    font-size: 3rem;
+    color: #fff;
+    border: magenta 2px solid;
+    padding: 3rem 1rem;
+}
+
+.hover-content {
+    position: relative;
+    border: blue solid 2px;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.hover-link {
+    display: none;
+    text-decoration: none;
+    color: #fff;
+}
+
+.hover-link:hover {
+    background-color: ;
+}
+
+.top:hover .hover-link {
+    display: block;
+}
+
+.hover-content a:hover {
+    color: #7ed56f;
+    background-color: #28b485;
+    transform: scale(1);
+
+    transition: all 300ms;
+} */
+
+
 .home-box {
     display: block;
     margin-left: 1rem;
@@ -132,8 +205,7 @@ body {
     display: none;
     position: absolute;
     text-align: center;
-    margin-top: 1.4rem;
-    /* scale min/max with .top minx/max */
+    margin-top: 1.156rem;
     min-width: 10rem;
     max-width: 10rem;
     background-color: #55c57a;
@@ -1051,7 +1123,7 @@ main {
 
     .info-card {
         width: 80%;
-        height: 42rem;
+        height: 40rem;
     }
 
     .card-title {
